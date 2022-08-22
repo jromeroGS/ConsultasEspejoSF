@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
     <style type="text/css">
         #form1 {
             height: 317px;
@@ -17,8 +18,8 @@
     <form id="form1" runat="server">
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 24px; top: 84px; position: absolute" Text="Criterio de Búsqueda"></asp:Label>
         <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 85px; position: absolute; left: 171px"></asp:TextBox>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Consultar" style="z-index: 1; left: 378px; top: 83px; position: absolute" />
-        <asp:DropDownList ID="DropDownList1" runat="server" style="z-index: 1; left: 175px; top: 48px; position: absolute">
+        <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Button1_Click" Text="Consultar" style="z-index: 1; left: 378px; top: 83px; position: absolute" />
+        <asp:DropDownList ID="DropDownList1" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 175px; top: 48px; position: absolute">
             <asp:ListItem>Tercero</asp:ListItem>
             <asp:ListItem>Cuenta</asp:ListItem>
             <asp:ListItem>Oportunidad</asp:ListItem>
