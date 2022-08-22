@@ -99,10 +99,12 @@ namespace WebApp
 
             if (DropDownList1.Text == "Casos")
             {
-                /*nombreObjeto = "Case";
+                nombreObjeto = "[Case]";
                 nombrefiltro = "CaseNumber";
-                cadenaSeleccion = "CaseNumber NumeroCaso";
-                query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " where " + nombrefiltro + "= '" + TextBox1.Text + "'";*/
+                cadenaSeleccion = "CaseNumber NumeroCaso,Status Estado,Subject Asunto, Description Descripcion, Country_Claim__c PaisReclamacion, Tipo_de_soluci_n__c TipoSolucion, [GROUP].name Propietario";
+                query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto
+                + " INNER JOIN [GROUP] ON [GROUP].ID = "+ nombreObjeto+".OwnerId"
+                + " WHERE " + nombrefiltro + "= '" + TextBox1.Text + "'";
             }
 
             if (DropDownList1.Text == "Productos")
