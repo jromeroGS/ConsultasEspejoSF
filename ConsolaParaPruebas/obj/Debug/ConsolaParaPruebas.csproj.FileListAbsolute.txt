@@ -1,0 +1,10 @@
+C:\Users\calannac\source\repos\ConsolaParaPruebas\bin\Debug\ConsolaParaPruebas.exe.config
+C:\Users\calannac\source\repos\ConsolaParaPruebas\bin\Debug\ConsolaParaPruebas.exe
+C:\Users\calannac\source\repos\ConsolaParaPruebas\bin\Debug\ConsolaParaPruebas.pdb
+C:\Users\calannac\source\repos\ConsolaParaPruebas\obj\Debug\ConsolaParaPruebas.csprojAssemblyReference.cache
+C:\Users\calannac\source\repos\ConsolaParaPruebas\obj\Debug\ConsolaParaPruebas.csproj.CoreCompileInputs.cache
+C:\Users\calannac\source\repos\ConsolaParaPruebas\obj\Debug\ConsolaParaPruebas.exe
+C:\Users\calannac\source\repos\ConsolaParaPruebas\obj\Debug\ConsolaParaPruebas.pdb
+C:\Users\calannac\source\repos\ConsolaParaPruebas\bin\Debug\ClassLibrary1.dll
+C:\Users\calannac\source\repos\ConsolaParaPruebas\bin\Debug\ClassLibrary1.pdb
+C:\Users\calannac\source\repos\ConsolaParaPruebas\obj\Debug\ConsolaParaPruebas.csproj.CopyComplete
