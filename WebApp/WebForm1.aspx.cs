@@ -99,6 +99,7 @@ namespace WebApp
 
             if (DropDownList1.Text == "Casos")
             {
+            //pruebas de casos
                 nombreObjeto = "[Case]";
                 nombrefiltro = "CaseNumber";
                 cadenaSeleccion = "CaseNumber NumeroCaso,Status Estado,Subject Asunto, Description Descripcion, Country_Claim__c PaisReclamacion, Tipo_de_soluci_n__c TipoSolucion, [GROUP].name Propietario";
