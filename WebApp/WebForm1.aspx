@@ -14,11 +14,11 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color:gainsboro">
 
     <form id="form1" runat="server">
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 32px; top: 135px; position: absolute" Text="Buscar"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 136px; position: absolute; left: 204px"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" placeholder="Ingresa el dato..."  class="form-control-sm" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 136px; position: absolute; left: 204px"></asp:TextBox>
         <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Button1_Click" Text="Consultar" style="z-index: 1; left: 443px; top: 84px; position: absolute" />
         <asp:DropDownList ID="DropDownList1" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 48px; position: absolute" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             <asp:ListItem>Tercero</asp:ListItem>

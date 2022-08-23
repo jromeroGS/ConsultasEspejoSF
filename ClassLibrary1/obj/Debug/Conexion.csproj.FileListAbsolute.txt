@@ -43,3 +43,12 @@ C:\Users\Adriana\Source\Repos\ConsultasEspejoSF3\ClassLibrary1\obj\Debug\Conexio
 C:\Users\Adriana\Source\Repos\ConsultasEspejoSF3\ClassLibrary1\obj\Debug\Conexion.csproj.CopyComplete
 C:\Users\Adriana\Source\Repos\ConsultasEspejoSF3\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\Adriana\Source\Repos\ConsultasEspejoSF3\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\bin\Debug\System.Data.SqlClient.dll
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\bin\Debug\System.Data.SqlClient.xml
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\obj\Debug\Conexion.csproj.AssemblyReference.cache
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\obj\Debug\Conexion.csproj.CoreCompileInputs.cache
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\obj\Debug\Conexion.csproj.CopyComplete
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\calannac\Desktop\hoy\ConsultasEspejoSF\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
