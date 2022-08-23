@@ -162,7 +162,7 @@ namespace WebApp
                     break;
 
                 case "Casos":
-				       //Pruebas sincronizacion Github
+				      //prueba Ceci
                         nombreObjeto = "[Case]";
                         nombrefiltro = "CaseNumber";
                         cadenaSeleccion = "CaseNumber NumeroCaso,Status Estado,Subject Asunto, Description Descripcion, Country_Claim__c PaisReclamacion, Tipo_de_soluci_n__c TipoSolucion, [GROUP].name Propietario";
