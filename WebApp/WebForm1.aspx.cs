@@ -200,12 +200,12 @@ namespace WebApp
                     break;
 
                 case "Casos":
-                        //pruebas de casos
-                        nombreObjeto = "[Case]";
-                        nombrefiltro = "CaseNumber";
-                        cadenaSeleccion = "CaseNumber NumeroCaso,Status Estado,Subject Asunto, Description Descripcion, Country_Claim__c PaisReclamacion, Tipo_de_soluci_n__c TipoSolucion, [GROUP].name Propietario";
+                    //Pruebas casos Juan
+                    nombreObjeto = "[Case]";
+                    nombrefiltro = "CaseNumber";
+                        cadenaSeleccion = "CaseNumber NumeroCaso,Status Estado,Subject Asunto, Description Descripcion, Country_Claim__c PaisReclamacion, Tipo_de_soluci_n__c TipoSolucion, ISNULL([user].name,[GROUP].name) Propietario";
                         query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto
-                        + " INNER JOIN [GROUP] ON [GROUP].ID = " + nombreObjeto + ".OwnerId"
+                        + " LEFT JOIN [GROUP] ON [GROUP].ID = [Case].OwnerId LEFT JOIN [user] ON [user].id=[Case].OwnerId"
                         + " WHERE " + nombrefiltro + "= '" + TextBox1.Text + "'";
 
                     break;
