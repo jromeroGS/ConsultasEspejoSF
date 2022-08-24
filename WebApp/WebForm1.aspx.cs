@@ -27,9 +27,9 @@ namespace WebApp
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            DropDownList2.Items.Add("Nit");
+            /*DropDownList2.Items.Add("Nit");
             DropDownList2.Items.Add("Razón Social");
-            DropDownList2.Items.Add("Código");
+            DropDownList2.Items.Add("Código");*/
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -82,10 +82,6 @@ namespace WebApp
                     //nombrefiltro = "Account_ID__c";
                     cadenaSeleccion = "ID ID, Name NombreCuenta, Tipo_de_identificacion__c TipoIdent, PartyType__c TipoCuenta, Account_ID__c  NúmeroCuenta, Party_Id__c ClienteÚnico,  Identificacion__c Identificación, CommercialAddressP__c DireccionComercial, CountryParty__c País, Valor_Total_Mensual__c ValorMensual, CommercialAddressP__c DirecciónCom, CountryParty__c País, Customer_Type__c TipoCliente";
                     //DropDownList2.inner.html =
-
-                   
-
-
                     switch (DropDownList2.Text)
                     {
                         case "Nit":
@@ -111,7 +107,7 @@ namespace WebApp
                 case "Oportunidad":
                     nombreObjeto = "OPPORTUNITY Opor";
                     //nombrefiltro = "Opor.contract_code__c";
-                    cadenaSeleccion = "Opor.ID ID, Ter.Name RazónSocial, Ter.PartyIdentification__c Identificación, Opor.Contract_code__c Contrato, Opor.StageName Etapa, Opor.Type_of_contract__c TipoCont, Opor.CustomerType__c TipoCliente,  Opor.NetValue__c ValorVenta, Opor.TotalDiscount__c	Descuento, Opor.Amount ValorNeto, Opor.TotalIVA__c TotalIva, Opor.GrandTotal__c ValorTotal, CampaignName__c Campaña, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LiveOpportu__c OporViva, Opor.CommercialAddressP__c DirecciónComercial, Opor.CommercialPhoneP__c Telf, Opor.Principal_Commercial_Email2__c Email, Opor.Equipo_de_ventas__c EquipoVentas";
+                    cadenaSeleccion = "Opor.ID ID, Ter.Name RazónSocial, Ter.PartyIdentification__c Identificación, Opor.Contract_code__c Contrato, Opor.StageName Etapa, Opor.Type_of_contract__c TipoCont, Opor.CustomerType__c TipoCliente,  Opor.NetValue__c ValorVenta, Opor.TotalDiscount__c	Descuento, Opor.Amount ValorNeto, Opor.TotalIVA__c TotalIva, Opor.GrandTotal__c ValorTotal, CampaignName__c Campaña, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LiveOpportu__c OporViva, Opor.CommercialAddressP__c DirecciónComercial, Opor.CommercialPhoneP__c Telf, Opor.Principal_Commercial_Email2__c Email, Opor.Equipo_de_ventas__c EquipoVentas, Contact.Name Autorizante, Usu.NAME Propietario, Canal_structure__c CanalEstructura, LegalvalidationDate__c ValidaciónJurídica";
 
                     switch (DropDownList2.Text)
                     {
@@ -133,14 +129,35 @@ namespace WebApp
 
 
                     }
-                    query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " INNER JOIN ACCOUNT Cuenta ON Opor.AccountId = Cuenta.id INNER JOIN Party__c Ter ON Cuenta.Tercero__c = Ter.id  where " + nombrefiltro + query2;
+                    query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " INNER JOIN ACCOUNT Cuenta ON Opor.AccountId = Cuenta.id INNER JOIN Party__c Ter ON Cuenta.Tercero__c = Ter.id INNER JOIN Contact ON Contact.id = Opor.Authorizer__c INNER JOIN [USER] Usu ON Usu.id = Opor.OwnerId where " + nombrefiltro + query2;
                     break;
                     
                 case "Datos de Facturación":        
-                    nombreObjeto = "BILLINGDATA__c";
-                    nombrefiltro = "Main_Contract__c";
-                    cadenaSeleccion = "BILLINGDATA__c.ID ID, Collection_Agent__c.Name, Identification_Type__c TipoId, IdentityTxt__c Identificación, Main_Contract__c Contrato, BILLINGDATA__c.Billing_Credential__c CódigoMedioPago, ExternalId_PayU__c CódigoPAYU, FirstQuoteDate__c FechaPrimeraCuota, Direccion_facturacion__c Dirección, Telefono_Facturacion__c Teléfono, Email_Facturacion__c Email, Celular_Facturacion__c Celular, SalesDocument__c ContratoFactura, Sales_amount__c Valordeventa, DiscountAmount__c Valordedescuento, AmountWithTaxes__c ValorNeto, IVAAmount__c ValorImpuesto ";
-                    query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " INNER JOIN Collection_Agent__c ON BILLINGDATA__c.Collection_Agent__c = Collection_Agent__c.ID where " + nombrefiltro + "= '" + TextBox1.Text + "'";
+                    nombreObjeto = "BILLINGDATA__c DatosF";
+                    //nombrefiltro = "Main_Contract__c";
+
+                    switch (DropDownList2.Text)
+                    {
+                        case "Nit":
+                            nombrefiltro = "Ter.PartyIdentification__c";
+                            query2 = "= '" + TextBox1.Text + "'";
+                            break;
+                        case "Razón Social":
+                            nombrefiltro = "Ter.Name";
+                            query2 = " like '%" + TextBox1.Text + "%' ";
+                            break;
+                        case "Código":
+                            nombrefiltro = "Opor.contract_code__c";
+                            query2 = "= '" + TextBox1.Text + "'";
+                            break;
+                        default:
+                            nombrefiltro = "Opor.contract_code__c";
+                            break;
+
+
+                    }
+                    cadenaSeleccion = "DatosF.ID ID, BusinessName__c RazónSocial, DatosF.PartyNumber__c ClienteUnico, Collection_Agent__c.Name AgenteRecaudo, Identification_Type__c TipoId, IdentityTxt__c Identificación, DatosF.Main_Contract__c ContratoPrin, Salesforce_Contract__c Contrato, DatosF.Billing_Credential__c CódigoMedioPago, DatosF.ExternalId_PayU__c CódigoPAYU, FirstQuoteDate__c FechaPrimeraCuota, Direccion_facturacion__c Dirección, Telefono_Facturacion__c Teléfono, Email_Facturacion__c Email, Celular_Facturacion__c Celular, SalesDocument__c ContratoFactura, Sales_amount__c Valordeventa, DiscountAmount__c Valordedescuento, AmountWithTaxes__c ValorNeto, IVAAmount__c ValorImpuesto, Ciudad.name CiudadOperador,Operator_Phone__c TeléfonoOperador ";
+                    query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " INNER JOIN Collection_Agent__c ON DatosF.Collection_Agent__c = Collection_Agent__c.ID INNER JOIN Location__c ciudad ON DatosF.City_Operator_Phone__c = Ciudad.Id LEFT JOIN Opportunity Opor ON Opor.id = DatosF.Opportunityid__c LEFT JOIN Account Cuenta ON DatosF.BillingAccountId__c = cuenta.id LEFT JOIN party__c Ter ON Cuenta.Tercero__c = Ter.id where " + nombrefiltro + query2;
                     break;
                 case "Productos X Cotización":
                     nombreObjeto = "QUOTELINEITEM";
@@ -155,14 +172,35 @@ namespace WebApp
                     query = "SELECT " + cadenaSeleccion + " FROM ACCOUNT INNER JOIN OPPORTUNITY ON OPPORTUNITY.accountid = ACCOUNT.id INNER JOIN QUOTE ON QUOTE.OpportunityId = OPPORTUNITY.ID INNER JOIN QUOTELINEITEM ON QUOTELINEITEM.QuoteId = QUOTE.ID INNER JOIN PRODUCT2 ON QUOTELINEITEM.Product2Id = PRODUCT2.Id INNER JOIN ASSET ON QUOTELINEITEM.Activo_producido__c = ASSET.ID where " + nombrefiltro + "= '" + TextBox1.Text + "'";
                     break;
                 case "Consolidado de Ventas":
-                        nombreObjeto = "ConsolidatedSales__c";
-                        nombrefiltro = "OPPORTUNITY.contract_code__c";
-                        cadenaSeleccion = "ConsolidatedSales__c.ID IDConsolidado, ConsolidatedSales__c.name NommbreConsolidado, ConsolidatedSales__c.Contract_Code__c Contrato, ConsolidatedSales__c.SalesDocument__c ContratoFactura, ACCOUNT.Name NombreCuenta, ConsolidatedSales__c.PartyNumber__c ClienteUnico, ConsolidatedSales__c.BusinessName__c RazónSocial, ConsolidatedSales__c.Identification_Type__c TipoIdentificación, ConsolidatedSales__c.Direccion_facturacion__c DirecciónFacturación, ConsolidatedSales__c.Telefono_Facturacion__c Teléfono, ConsolidatedSales__c.Email_Facturacion__c Email, Collection_Agent__c.name AgenteRecaudo, ConsolidatedSales__c.TotalPaymentValue__c ValorConsolidado, ConsolidatedSales__c.DiscountAmount__c ValorDescuento, ConsolidatedSales__c.AmountWithTaxes__c ValorNeto, ConsolidatedSales__c.Tax1Value__c ValorImpuesto, TotalBilling__c ValorTotalFacturar, ConsolidatedSales__c.Date_First_Installment__c FechaPrimeraCuota";
-                        query = "SELECT " + cadenaSeleccion + " FROM ACCOUNT INNER JOIN OPPORTUNITY ON OPPORTUNITY.accountid = ACCOUNT.id INNER JOIN QUOTE ON QUOTE.OpportunityId = OPPORTUNITY.ID INNER JOIN ConsolidatedSales__c ON ConsolidatedSales__c.Contract_Code__c = OPPORTUNITY.Contract_code__c INNER JOIN Collection_Agent__c ON ConsolidatedSales__c.Collection_Agent__c = Collection_Agent__c.ID where " + nombrefiltro + "= '" + TextBox1.Text + "' ORDER BY ConsolidatedSales__c.name";
+                        nombreObjeto = "ConsolidatedSales__c Cons";
+                        //nombrefiltro = "OPPORTUNITY.contract_code__c";
+
+                    switch (DropDownList2.Text)
+                    {
+                        case "Nit":
+                            nombrefiltro = "Ter.PartyIdentification__c";
+                            query2 = "= '" + TextBox1.Text + "'";
+                            break;
+                        case "Razón Social":
+                            nombrefiltro = "Ter.Name";
+                            query2 = " like '%" + TextBox1.Text + "%' ";
+                            break;
+                        case "Código":
+                            nombrefiltro = "Opor.contract_code__c";
+                            query2 = "= '" + TextBox1.Text + "'";
+                            break;
+                        default:
+                            nombrefiltro = "Opor.contract_code__c";
+                            break;
+
+
+                    }
+                    cadenaSeleccion = "Cons.ID IDConsolidado, Cons.name Consolidado, Cons.Contract_Code__c Contrato, Cons.SalesDocument__c ContratoFactura, Cuen.Name NombreCuenta, Cons.PartyNumber__c ClienteUnico, Cons.BusinessName__c Razón_Social, Cons.Identification_Type__c TipoIdentificación, Cons.Direccion_facturacion__c DirecciónFacturación, Ciudad.Name CiudadOperador,Cons.Operator_Phone__c Telf_Operador, Cons.Email_Facturacion__c Email, Collection_Agent__c.name AgenteRecaudo, Cons.TotalPaymentValue__c ValorConsolidado, Cons.DiscountAmount__c ValorDescuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c ValorImpuesto, TotalBilling__c ValorTotalFacturar, Cons.Date_First_Installment__c FechaPrimeraCuota";
+                        query = "SELECT " + cadenaSeleccion + " FROM PARTY__C Ter INNER JOIN ACCOUNT Cuen ON Cuen.Tercero__c = Ter.id INNER JOIN OPPORTUNITY Opor ON Opor.accountid = Cuen.id INNER JOIN QUOTE ON QUOTE.OpportunityId = Opor.ID INNER JOIN ConsolidatedSales__c Cons ON Cons.Contract_Code__c = Opor.Contract_code__c INNER JOIN Collection_Agent__c ON Cons.Collection_Agent__c = Collection_Agent__c.ID INNER JOIN LOCATION__C Ciudad ON Ciudad.id = Cons.City_Operator_Phone__c where " + nombrefiltro + query2 + " ORDER BY Cons.name";
                     break;
 
                 case "Casos":
-				      //prueba Ceci y Juan con respecto sincronizacion Github
+                        //pruebas de casos
                         nombreObjeto = "[Case]";
                         nombrefiltro = "CaseNumber";
                         cadenaSeleccion = "CaseNumber NumeroCaso,Status Estado,Subject Asunto, Description Descripcion, Country_Claim__c PaisReclamacion, Tipo_de_soluci_n__c TipoSolucion, [GROUP].name Propietario";
@@ -205,7 +243,7 @@ namespace WebApp
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList2.Items.Clear();
+            /*DropDownList2.Items.Clear();
             switch (DropDownList1.Text)
             {
                 
@@ -244,7 +282,7 @@ namespace WebApp
                     DropDownList2.Items.Add("Caso");
                     break;
 
-            }
+            }*/
             
         }
     }
