@@ -16,7 +16,7 @@
 </head>
 <body style="background-color:gainsboro">
 
-    <form id="form1" runat="server" enableviewstate="True" contenteditable="false">
+<form id="form1" runat="server" enableviewstate="True" contenteditable="false">
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 32px; top: 135px; position: absolute" Text="Buscar"></asp:Label>
         <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 136px; position: absolute; left: 204px"></asp:TextBox>
         <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Button1_Click" Text="Consultar" style="z-index: 1; left: 443px; top: 84px; position: absolute" BackColor="#3333FF" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
