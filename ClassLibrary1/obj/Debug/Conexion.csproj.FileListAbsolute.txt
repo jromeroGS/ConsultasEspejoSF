@@ -61,3 +61,12 @@ C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_23082023\Consu
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_23082023\ConsultasEspejoSF\ClassLibrary1\obj\Debug\Conexion.csproj.CopyComplete
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_23082023\ConsultasEspejoSF\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_23082023\ConsultasEspejoSF\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\bin\Debug\System.Data.SqlClient.dll
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\bin\Debug\System.Data.SqlClient.xml
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\obj\Debug\Conexion.csprojAssemblyReference.cache
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\obj\Debug\Conexion.csproj.CoreCompileInputs.cache
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\obj\Debug\Conexion.csproj.CopyComplete
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
