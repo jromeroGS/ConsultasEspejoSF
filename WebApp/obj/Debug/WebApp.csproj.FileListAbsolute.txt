@@ -453,9 +453,7 @@ C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\Consu
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\bin\roslyn\vbc.rsp
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\bin\roslyn\VBCSCompiler.exe
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\bin\ClassLibrary1.dll
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\bin\ClassLibrary1.pdb
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\juarompa\Documents\Consultas Sf Esspejo\ConsultaEspejoSF_24082022\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
