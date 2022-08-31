@@ -21,7 +21,7 @@
         <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 136px; position: absolute; left: 204px"></asp:TextBox>
         <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Consultar" Text="Consultar" style="z-index: 1; left: 443px; top: 84px; position: absolute" BackColor="#3333FF" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
         &nbsp;<asp:Button ID="Button5" runat="server" class="btn btn-success" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 443px; top: 31px; position: absolute; height: 31px;" />
-        <asp:DropDownList ID="DropDownList1" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 48px; position: absolute"></asp:DropDownList>
+        <asp:DropDownList ID="DDLObjeto"  OnSelectedIndexChanged="DDLObjeto_SelectedIndexChanged" AutoPostBack="true" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 48px; position: absolute"></asp:DropDownList>
         
         <div>
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#3333CC" BorderStyle="Double" BorderWidth="5px" CaptionAlign="Bottom" ForeColor="Black" style="z-index: 1; left: 33px; top: 186px; position: relative; height: 79px; width: 279px; margin-top: 19px" Width="279px" CellPadding="2" CellSpacing="2" GridLines="None" Height="300px" HorizontalAlign="Justify" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
@@ -31,11 +31,11 @@
         </asp:GridView>
         </div>
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 35px; top: 52px; position: absolute" Text="Seleccione el Objeto"></asp:Label>
-        <asp:DropDownList ID="DropDownList2" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 87px; position: absolute">
-            <asp:ListItem>Nit</asp:ListItem>
+        <asp:DropDownList ID="DDLFiltro" OnSelectedIndexChanged="DDLFiltro_SelectedIndexChanged" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 87px; position: absolute"></asp:DropDownList>
+           <!-- <asp:ListItem>Nit</asp:ListItem>
             <asp:ListItem>Razón Social</asp:ListItem>
-            <asp:ListItem>Código</asp:ListItem>
-        </asp:DropDownList>
+            <asp:ListItem>Código</asp:ListItem>-->
+        
         <br />
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 32px; top: 89px; position: absolute" Text="Criterio de Búsqueda"></asp:Label>
         <br />

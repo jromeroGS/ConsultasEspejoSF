@@ -4,6 +4,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
+/* Pendientes
+Pasar a store Procedure todos los queries y llamarlos desde .net
+Ver link de listas para objetos relacionados al objeto principal
+
+ */
 namespace WebApp.Modelo
 {
     public class MOD_Conexion

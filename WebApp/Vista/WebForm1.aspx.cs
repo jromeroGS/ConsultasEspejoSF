@@ -25,7 +25,14 @@ namespace WebApp
         public String query = "";
         WebApp.Modelo.MOD_Conexion conect = new WebApp.Modelo.MOD_Conexion();
         WebApp.Controlador.CTR_Consultar  filtros= new WebApp.Controlador.CTR_Consultar();
-        
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                LlenarDDLObjeto();
+            }
+        }
 
         protected void LlenarDDLObjeto()
         {
@@ -36,42 +43,37 @@ namespace WebApp
             comando.CommandType = CommandType.StoredProcedure;
             comando.CommandText = "spObjetoConsultaSF";
 
-            DropDownList1.DataSource = comando.ExecuteReader();
-            DropDownList1.DataTextField = "Objeto";
-            DropDownList1.DataValueField = "Id_Objeto";
-            DropDownList1.DataBind();
-           // DropDownList1.Items.Insert(0, new ListItem("Seleccione el Objeto"));
+            DDLObjeto.DataSource = comando.ExecuteReader();
+            DDLObjeto.DataTextField = "Objeto";
+            DDLObjeto.DataValueField = "Id_Objeto";
+            DDLObjeto.DataBind();
+            DDLObjeto.Items.Insert(0, new ListItem("Seleccione el Objeto","0"));
 
-            conexion.Close();
+            //conexion.Close();
 
         }
-        protected void LlenarDDLFiltro()
+        protected void LlenarDDLFiltro(String IdObjeto)
         {
             SqlConnection conexion = conect.Conection();
-            conexion.Open();
+            
             SqlCommand comando = new SqlCommand();
             comando.Connection = conexion;
             comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = "spObjetoConsultaSF";
-
-            DropDownList1.DataSource = comando.ExecuteReader();
-            DropDownList1.DataTextField = "Objeto";
-            DropDownList1.DataValueField = "ValorObjeto";
-            DropDownList1.DataBind();
+            comando.CommandText = "spConsultaFiltroSF";
+            comando.Parameters.Add("@ValObjeto", SqlDbType.VarChar).Value = IdObjeto;
+            conexion.Open();
+            DDLFiltro.DataSource = comando.ExecuteReader();
+            DDLFiltro.DataTextField = "NombreFiltro";
+            DDLFiltro.DataValueField = "Valor";
+            DDLFiltro.DataBind();
             // DropDownList1.Items.Insert(0, new ListItem("Seleccione el Objeto"));
 
-            conexion.Close();
+            //conexion.Close();
 
         }
 
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                LlenarDDLObjeto();
-            }
-        }
+       
 
         protected void Consultar(object sender, EventArgs e)
         {
@@ -79,8 +81,8 @@ namespace WebApp
             SqlConnection conexion = conect.Conection();
             conexion.Open();
 
-            String Lista1 = DropDownList1.SelectedItem.ToString();
-            String Lista2 = DropDownList2.Text;
+            String Lista1 = DDLObjeto.SelectedItem.ToString();
+            String Lista2 = DDLFiltro.Text;
             String Texto1 = TextBox1.Text;
             String query=filtros.Filtros(Lista1,Lista2,Texto1);
 
@@ -110,13 +112,13 @@ namespace WebApp
                 SqlConnection conexion = conect.Conection();
                 conexion.Open();
 
-                String Lista1 = DropDownList1.Text;
-                String Lista2 = DropDownList2.Text;
+                String Lista1 = DDLObjeto.SelectedItem.ToString();
+                String Lista2 = DDLFiltro.Text;
                 String Texto1 = TextBox1.Text;
                 String query = filtros.Filtros(Lista1, Lista2, Texto1);
 
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataAdapter data = new SqlDataAdapter(comando);
+                SqlCommand Sqlcmd = new SqlCommand(query, conexion);
+                SqlDataAdapter data = new SqlDataAdapter(Sqlcmd);
 
                 DataTable tabla = new DataTable("DTConsultas");
                 data.Fill(tabla);
@@ -147,13 +149,18 @@ namespace WebApp
                 throw;
             }
         }
+        protected void DDLObjeto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DDLFiltro.ClearSelection();
+            LlenarDDLFiltro(DDLObjeto.SelectedValue);
+        }
 
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DDLFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DDLObjeto_TextChanged(object sender, EventArgs e)
         {
 
         }

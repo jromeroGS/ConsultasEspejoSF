@@ -58,13 +58,13 @@ namespace WebApp {
         protected global::System.Web.UI.WebControls.Button Button5;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control DDLObjeto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList DDLObjeto;
         
         /// <summary>
         /// Control GridView1.
@@ -85,13 +85,13 @@ namespace WebApp {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Control DropDownList2.
+        /// Control DDLFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList DDLFiltro;
         
         /// <summary>
         /// Control Label3.
