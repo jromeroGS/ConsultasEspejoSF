@@ -49,7 +49,7 @@ namespace WebApp
             DDLObjeto.DataBind();
             DDLObjeto.Items.Insert(0, new ListItem("Seleccione el Objeto","0"));
 
-            //conexion.Close();
+            conexion.Close();
 
         }
         protected void LlenarDDLFiltro(String IdObjeto)
@@ -66,9 +66,8 @@ namespace WebApp
             DDLFiltro.DataTextField = "NombreFiltro";
             DDLFiltro.DataValueField = "Valor";
             DDLFiltro.DataBind();
-            // DropDownList1.Items.Insert(0, new ListItem("Seleccione el Objeto"));
 
-            //conexion.Close();
+            conexion.Close();
 
         }
 
@@ -155,14 +154,5 @@ namespace WebApp
             LlenarDDLFiltro(DDLObjeto.SelectedValue);
         }
 
-        protected void DDLFiltro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void DDLObjeto_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

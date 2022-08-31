@@ -31,10 +31,7 @@
         </asp:GridView>
         </div>
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 35px; top: 52px; position: absolute" Text="Seleccione el Objeto"></asp:Label>
-        <asp:DropDownList ID="DDLFiltro" OnSelectedIndexChanged="DDLFiltro_SelectedIndexChanged" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 87px; position: absolute"></asp:DropDownList>
-           <!-- <asp:ListItem>Nit</asp:ListItem>
-            <asp:ListItem>Razón Social</asp:ListItem>
-            <asp:ListItem>Código</asp:ListItem>-->
+        <asp:DropDownList ID="DDLFiltro"  runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 87px; position: absolute"></asp:DropDownList>
         
         <br />
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 32px; top: 89px; position: absolute" Text="Criterio de Búsqueda"></asp:Label>
