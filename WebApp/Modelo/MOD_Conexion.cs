@@ -43,12 +43,12 @@ namespace WebApp.Modelo
         }
         public String getProductosXCotizacion(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
-            query = "SELECT " + cadenaSeleccion + " FROM OPPORTUNITY INNER JOIN QUOTE ON QUOTE.OpportunityId = OPPORTUNITY.ID INNER JOIN QUOTELINEITEM ON QUOTELINEITEM.QuoteId = QUOTE.ID INNER JOIN PRODUCT2 ON QUOTELINEITEM.Product2Id = PRODUCT2.Id INNER JOIN ASSET ON QUOTELINEITEM.Activo_producido__c = ASSET.ID where " + nombrefiltro + "= '" + query2 + "'";
+            query = "SELECT " + cadenaSeleccion + " FROM PARTY__C Ter INNER JOIN ACCOUNT Cuenta ON Ter.id = Cuenta.Tercero__c INNER JOIN OPPORTUNITY opor ON Opor.AccountId = Cuenta.id INNER JOIN QUOTE Cot ON Cot.OpportunityId = Opor.ID INNER JOIN QUOTELINEITEM ProXCot ON ProXCot.QuoteId = Cot.ID INNER JOIN PRODUCT2 Prod ON ProXCot.Product2Id = Prod.Id INNER JOIN ASSET Act ON ProXCot.Activo_producido__c = Act.ID where " + nombrefiltro + query2;
             return query;
         }
         public String getActivos(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
-            query = "SELECT " + cadenaSeleccion + " FROM ACCOUNT INNER JOIN OPPORTUNITY ON OPPORTUNITY.accountid = ACCOUNT.id INNER JOIN QUOTE ON QUOTE.OpportunityId = OPPORTUNITY.ID INNER JOIN QUOTELINEITEM ON QUOTELINEITEM.QuoteId = QUOTE.ID INNER JOIN PRODUCT2 ON QUOTELINEITEM.Product2Id = PRODUCT2.Id INNER JOIN ASSET ON QUOTELINEITEM.Activo_producido__c = ASSET.ID where " + nombrefiltro + "= '" + query2 + "'";
+            query = "SELECT " + cadenaSeleccion + " FROM PARTY__C Ter INNER JOIN ACCOUNT Cuenta ON Cuenta.Tercero__c = Ter.Id INNER JOIN OPPORTUNITY Opor ON Opor.accountid = Cuenta.id INNER JOIN QUOTE Cot ON Cot.OpportunityId = Opor.ID INNER JOIN QUOTELINEITEM ProXCot ON ProXCot.QuoteId = Cot.ID INNER JOIN PRODUCT2 prod ON ProXCot.Product2Id = prod.Id INNER JOIN ASSET Act ON ProXCot.Activo_producido__c = Act.ID where " + nombrefiltro +  query2;
             return query;
         }
         public String getConsolidadoVentas(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
@@ -59,9 +59,9 @@ namespace WebApp.Modelo
         public String getCasos(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
             query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto 
-                    + "INNER JOIN ACCOUNT Cuenta ON Caso.AccountId = Cuenta.Id"
+                    + " INNER JOIN ACCOUNT Cuenta ON Caso.AccountId = Cuenta.Id"
                     + " LEFT JOIN [GROUP] ON [GROUP].ID = Caso.OwnerId LEFT JOIN [user] ON [user].id=Caso.OwnerId"
-                    + " WHERE " + nombrefiltro + "= '" + query2 + "'";
+                    + " WHERE " + nombrefiltro + query2;
             return query;
 
         }

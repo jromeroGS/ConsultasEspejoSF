@@ -112,9 +112,9 @@ namespace WebApp.Controlador
                     query = conexion.getFitroDatosFacturacion(cadenaSeleccion, nombreObjeto, nombrefiltro, query2);
                     break;
                  case "Productos X Cotización":
-                    nombreObjeto = "QUOTELINEITEM";
+                    nombreObjeto = "QUOTELINEITEM ProXCot";
                     //nombrefiltro = "OPPORTUNITY.contract_code__c";
-                    cadenaSeleccion = "QUOTELINEITEM.ID ID, QUOTELINEITEM.LINENUMBER IdProdXCot, QUOTELINEITEM.ReferenceId__c Referencia, QUOTELINEITEM.IdPurchase2__c IdAviso, QUOTELINEITEM.InsertionType__c TipoReferencia, PRODUCT2.name Producto, FinancialCodeTxt__c CódigoFinanciero, QUOTELINEITEM.UnitPrice PrecioUnitario, QUOTELINEITEM.UnitPrice PrecioVenta, QUOTELINEITEM.Value_Discount__c Descuento, QUOTELINEITEM.TotalPrice PrecioTotal, ASSET.NAME Activo";
+                    cadenaSeleccion = "ProXCot.ID ID, ProXCot.LINENUMBER IdProdXCot, ProXCot.ReferenceId__c Referencia, ProXCot.IdPurchase2__c IdAviso, ProXCot.InsertionType__c TipoReferencia, Prod.name Producto, FinancialCodeTxt__c CódigoFinanciero, ProXCot.UnitPrice PrecioUnitario, ProXCot.UnitPrice PrecioVenta, ProXCot.Value_Discount__c Descuento, ProXCot.TotalPrice PrecioTotal, Act.NAME Activo";
                     switch (Lista2)
                     {
                           case "Identificación":
@@ -130,13 +130,13 @@ namespace WebApp.Controlador
                                 query2 = "= '" + Texto1 + "'";
                                 break;
                     }
-                    query = conexion.getFiltroTercero(cadenaSeleccion, nombreObjeto, nombrefiltro, query2);             
+                    query = conexion.getProductosXCotizacion(cadenaSeleccion, nombreObjeto, nombrefiltro, query2);             
                     break;
 
                  case "Activos":
-                    nombreObjeto = "ASSET";
+                    nombreObjeto = "ASSET Act";
                     //nombrefiltro = "OPPORTUNITY.contract_code__c";
-                    cadenaSeleccion = "ASSET.ID ID, ASSET.NAME NombreActivo, ASSET.STATUS EstadoActivo, ASSET.Url_Modificaciones__c UrlModificaciones, ASSET.Price Precio, PRODUCT2.name NombreProducto, ASSET.Date_Nextbilling__c FechaProxFacturación, ASSET.SubscripType__c TipoSuscripción, ASSET.Monthly_value__c ValorMensual, ASSET.InstallDate FechaInicialUso, ASSET.UsageEndDate FechaFinalUso, ASSET.Desactivation_Date__c FechaDesactivacion, ASSET.IdPurchase2__c IdAviso, ASSET.PurchaseDate FechaCompra";
+                    cadenaSeleccion = "Act.ID ID, Act.NAME NombreActivo, Act.STATUS EstadoActivo, Act.Url_Modificaciones__c UrlModificaciones, Act.Price Precio, Prod.name NombreProducto, Act.Date_Nextbilling__c FechaProxFacturación, Act.SubscripType__c TipoSuscripción, Act.Monthly_value__c ValorMensual, Act.InstallDate FechaInicialUso, Act.UsageEndDate FechaFinalUso, Act.Desactivation_Date__c FechaDesactivacion, Act.IdPurchase2__c IdAviso, Act.PurchaseDate FechaCompra";
                     switch (Lista2)
                     {
                         case "Identificación":
@@ -152,7 +152,7 @@ namespace WebApp.Controlador
                             query2 = "= '" + Texto1 + "'";
                             break;
                     }
-                    query = conexion.getFiltroTercero(cadenaSeleccion, nombreObjeto, nombrefiltro, query2);
+                    query = conexion.getActivos(cadenaSeleccion, nombreObjeto, nombrefiltro, query2);
                     break;
 
                 case "Consolidado de Ventas":
@@ -196,8 +196,12 @@ namespace WebApp.Controlador
                             nombrefiltro = "Cuenta.Name";
                             query2 = " like '%" + Texto1 + "%' ";
                             break;
-                        case "Código":
+                        case "Número Caso":
                             nombrefiltro = "Caso.CaseNumber";
+                            query2 = "= '" + Texto1 + "'";
+                            break;
+                        case "Email":
+                            nombrefiltro = "Caso.SuppliedEmail";
                             query2 = "= '" + Texto1 + "'";
                             break;
                     }
