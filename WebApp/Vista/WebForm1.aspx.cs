@@ -81,7 +81,7 @@ namespace WebApp
             conexion.Open();
 
             String Lista1 = DDLObjeto.SelectedItem.ToString();
-            String Lista2 = DDLFiltro.Text;
+            String Lista2 = DDLFiltro.SelectedItem.ToString();
             String Texto1 = TextBox1.Text;
             String query=filtros.Filtros(Lista1,Lista2,Texto1);
 

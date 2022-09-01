@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
     <style type="text/css">
         #form1 {
-            height: 383px;
-            width: 876px;
+            height: 435px;
+            width: 910px;
             margin-right: 27px;
         }
     </style>
@@ -23,19 +23,34 @@
         &nbsp;<asp:Button ID="Button5" runat="server" class="btn btn-success" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 443px; top: 31px; position: absolute; height: 31px;" />
         <asp:DropDownList ID="DDLObjeto"  OnSelectedIndexChanged="DDLObjeto_SelectedIndexChanged" AutoPostBack="true" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 48px; position: absolute"></asp:DropDownList>
         
-        <div>
-        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#3333CC" BorderStyle="Double" BorderWidth="5px" CaptionAlign="Bottom" ForeColor="Black" style="z-index: 1; left: 33px; top: 186px; position: relative; height: 79px; width: 279px; margin-top: 19px" Width="279px" CellPadding="2" CellSpacing="2" GridLines="None" Height="300px" HorizontalAlign="Justify" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
-            <HeaderStyle BackColor="#3333FF" BorderColor="White" BorderStyle="Solid" BorderWidth="2px" ForeColor="White" HorizontalAlign="Left" Wrap="True" />
-            <RowStyle BorderStyle="Solid" Wrap="False" />
-            <SelectedRowStyle BorderStyle="Solid" />
-        </asp:GridView>
-        </div>
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 35px; top: 52px; position: absolute" Text="Seleccione el Objeto"></asp:Label>
         <asp:DropDownList ID="DDLFiltro"  runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 87px; position: absolute"></asp:DropDownList>
+        
+
+            
+
+
         
         <br />
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 32px; top: 89px; position: absolute" Text="Criterio de Búsqueda"></asp:Label>
         <br />
+        
+            <div style="width: 560px; height: 164px; overflow:auto; z-index: 1; left: 29px; top: 191px; position: absolute;">
+                <asp:GridView ID="GridView1" runat="server" CaptionAlign="Bottom" ForeColor="#333333" style="z-index: 2; left: -3px; top: 0px; position: relative; height: 50px; width: 247px; margin-top: 0px" CellPadding="4" GridLines="None" HorizontalAlign="Justify" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" BorderColor="White" BorderStyle="Solid" BorderWidth="2px" ForeColor="White" HorizontalAlign="Left" Wrap="True" Font-Bold="True" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BorderStyle="Solid" Wrap="False" BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BorderStyle="Solid" BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        </asp:GridView>
+            </div>
+        
     </form>
 </body>
 
