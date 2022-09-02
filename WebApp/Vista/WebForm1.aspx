@@ -14,13 +14,13 @@
         }
     </style>
 </head>
-<body style="background-color:gainsboro">
+<body style="background-color:#77acd2">
 
 <form id="form1" runat="server" enableviewstate="True" contenteditable="false">
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 32px; top: 135px; position: absolute" Text="Buscar"></asp:Label>
         <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 136px; position: absolute; left: 204px"></asp:TextBox>
-        <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Consultar" Text="Consultar" style="z-index: 1; left: 443px; top: 84px; position: absolute" BackColor="#3333FF" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
-        &nbsp;<asp:Button ID="Button5" runat="server" class="btn btn-success" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 443px; top: 31px; position: absolute; height: 31px;" />
+        <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Consultar" Text="Consultar" style="z-index: 1; left: 443px; top: 135px; position: absolute" BackColor="#3333FF" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
+        &nbsp;<asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 443px; top: 51px; position: absolute; height: 31px;" />
         <asp:DropDownList ID="DDLObjeto"  OnSelectedIndexChanged="DDLObjeto_SelectedIndexChanged" AutoPostBack="true" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 204px; top: 48px; position: absolute"></asp:DropDownList>
         
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 35px; top: 52px; position: absolute" Text="Seleccione el Objeto"></asp:Label>
