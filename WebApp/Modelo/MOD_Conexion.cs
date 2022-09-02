@@ -59,7 +59,7 @@ namespace WebApp.Modelo
         public String getCasos(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
             query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto 
-                    + " INNER JOIN ACCOUNT Cuenta ON Caso.AccountId = Cuenta.Id"
+                    + " LEFT JOIN ACCOUNT Cuenta ON Caso.AccountId = Cuenta.Id"
                     + " LEFT JOIN [GROUP] ON [GROUP].ID = Caso.OwnerId LEFT JOIN [user] ON [user].id=Caso.OwnerId"
                     + " WHERE " + nombrefiltro + query2;
             return query;

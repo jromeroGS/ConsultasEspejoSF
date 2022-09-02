@@ -158,7 +158,7 @@ namespace WebApp.Controlador
                 case "Consolidado de Ventas":
                     nombreObjeto = "ConsolidatedSales__c Cons";
                     //nombrefiltro = "OPPORTUNITY.contract_code__c";
-                    cadenaSeleccion = "Cons.ID IDConsolidado, Cons.name Consolidado, Cons.Contract_Code__c Contrato, Cons.SalesDocument__c ContratoFactura, Cuen.Name NombreCuenta, Cons.PartyNumber__c ClienteUnico, Cons.BusinessName__c Razón_Social, Cons.Identification_Type__c TipoIdentificación, Cons.Direccion_facturacion__c DirecciónFacturación, Ciudad.Name CiudadOperador,Cons.Operator_Phone__c Telf_Operador, Cons.Email_Facturacion__c Email, Collection_Agent__c.name AgenteRecaudo, Cons.TotalPaymentValue__c ValorConsolidado, Cons.DiscountAmount__c ValorDescuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c ValorImpuesto, TotalBilling__c ValorTotalFacturar, Cons.Date_First_Installment__c FechaPrimeraCuota";
+                    cadenaSeleccion = "Cons.ID ID, Cons.name Consolidado, Cons.Contract_Code__c Contrato, Cons.SalesDocument__c ContratoFactura, Cuen.Name NombreCuenta, Cons.PartyNumber__c ClienteUnico, Cons.BusinessName__c Razón_Social, Cons.Identification_Type__c TipoIdentificación, Cons.Direccion_facturacion__c DirecciónFacturación, Ciudad.Name CiudadOperador,Cons.Operator_Phone__c Telf_Operador, Cons.Email_Facturacion__c Email, Collection_Agent__c.name AgenteRecaudo, Cons.TotalPaymentValue__c ValorConsolidado, Cons.DiscountAmount__c ValorDescuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c ValorImpuesto, TotalBilling__c ValorTotalFacturar, Cons.Date_First_Installment__c FechaPrimeraCuota";
                     switch (Lista2)
                     {
                         case "Identificación":

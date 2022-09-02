@@ -49,6 +49,8 @@ namespace WebApp
             DDLObjeto.DataBind();
             DDLObjeto.Items.Insert(0, new ListItem("Seleccione el Objeto","0"));
 
+            GridView2 = null;
+
             conexion.Close();
 
         }
@@ -79,6 +81,8 @@ namespace WebApp
 
             SqlConnection conexion = conect.Conection();
             conexion.Open();
+
+            GridView2.Visible = false;
 
             String Lista1 = DDLObjeto.SelectedItem.ToString();
             String Lista2 = DDLFiltro.SelectedItem.ToString();
@@ -112,7 +116,7 @@ namespace WebApp
                 conexion.Open();
 
                 String Lista1 = DDLObjeto.SelectedItem.ToString();
-                String Lista2 = DDLFiltro.Text;
+                String Lista2 = DDLFiltro.SelectedItem.ToString();
                 String Texto1 = TextBox1.Text;
                 String query = filtros.Filtros(Lista1, Lista2, Texto1);
 
@@ -154,5 +158,8 @@ namespace WebApp
             LlenarDDLFiltro(DDLObjeto.SelectedValue);
         }
 
+        
+
     }
 }
+
