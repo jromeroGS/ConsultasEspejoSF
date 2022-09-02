@@ -185,7 +185,15 @@ namespace WebApp.Controlador
                 case "Casos":
                     nombreObjeto = "[Case] Caso";
                     //nombrefiltro = "CaseNumber";
-                    cadenaSeleccion = "Caso.CaseNumber NumeroCaso,Caso.Status Estado,Caso.Subject Asunto, Caso.Description Descripcion, Caso.Country_Claim__c PaisReclamacion, Caso.Tipo_de_soluci_n__c TipoSolucion, ISNULL([user].name,[GROUP].name) Propietario";
+                    cadenaSeleccion = "Caso.CaseNumber NumeroCaso,Caso.Status Estado,Caso.Subject Asunto," 
+                        +" Caso.Description Descripcion, Caso.Country_Claim__c PaisReclamacion, Caso.Tipo_de_soluci_n__c TipoSolucion,"
+                        +" Caso.Priority Prioridad, Caso.CreatedDate__c FechaDeApertura, Caso.ClosedDate__c FechaDeCierre,"
+                        +" Caso.FreelanceName__c NombreFreelance, Tipificacion.Name DetalleTipoSolicitud,"
+                        +" Caso.old_case__c Antiguedad_Dias, Caso.Origin OrigenDelCaso, Caso.Correo_electronico_del_contacto__c CorreoElectronicoDelContacto,"
+                        +" Cuenta.Name NombreDeLaCuenta, TipoRegistro.Name TipoDeRegistroDelCaso, CasoRelacionado.CaseNumber CasoPrincipal,"
+                        +" Caso.RecurrentCaseByEmail2__c CasoReincidentePorCorreo, Caso.Solution_Detail__c DetalleDeLaSolucion,"
+                        +" ISNULL(UsuarioCreadoPor.name,ColaCreadoPor.name ) CreadoPor,"
+                        +" ISNULL(UsuarioPropietario.name,ColaPropietario.name) Propietario";
                     switch (Lista2)
                     {
                         case "Identificación":

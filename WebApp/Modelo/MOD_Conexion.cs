@@ -60,7 +60,11 @@ namespace WebApp.Modelo
         {
             query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto 
                     + " LEFT JOIN ACCOUNT Cuenta ON Caso.AccountId = Cuenta.Id"
-                    + " LEFT JOIN [GROUP] ON [GROUP].ID = Caso.OwnerId LEFT JOIN [user] ON [user].id=Caso.OwnerId"
+                    + " LEFT JOIN [Case] CasoRelacionado ON Caso.ParentId = CasoRelacionado.Id"
+                    + " LEFT JOIN Tipificacion__c Tipificacion ON Caso.Detalle_tipo_de_solicitud__c = Tipificacion.Id"
+                    + " LEFT JOIN RecordType TipoRegistro ON Caso.RecordTypeId = TipoRegistro.Id"
+                    + " LEFT JOIN [GROUP] ColaPropietario ON ColaPropietario.ID = Caso.OwnerId LEFT JOIN [user] UsuarioPropietario ON UsuarioPropietario.id=Caso.OwnerId"
+                    + " LEFT JOIN [GROUP] ColaCreadoPor ON ColaCreadoPor.ID = Caso.CreatedById LEFT JOIN [user] UsuarioCreadoPor ON UsuarioCreadoPor.id=Caso.CreatedById"
                     + " WHERE " + nombrefiltro + query2;
             return query;
 
