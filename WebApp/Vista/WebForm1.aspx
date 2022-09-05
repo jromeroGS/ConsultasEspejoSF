@@ -15,6 +15,8 @@
     </style>
 </head>
 <body style="background-color:#77acd2">
+    <asp:Image ID="Image1" runat="server" Height="250px" Width="360px" src="./logo.png" style="margin-left:600px; margin-top:50px"/>
+
 
 <form id="form1" runat="server" enableviewstate="True" contenteditable="false">
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 32px; top: 135px; position: absolute" Text="Buscar"></asp:Label>

@@ -651,7 +651,6 @@ C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\ClosedXML.xml
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\DocumentFormat.OpenXml.xml
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\ExcelNumberFormat.xml
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.dll
@@ -661,3 +660,9 @@ C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.License.dll
 C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.Pdf.dll
 C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.XLS.dll
 C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Microsoft.mshtml.dll
+C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.Common.dll
+C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.License.dll
+C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.Pdf.dll
+C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.XLS.dll
+C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\bin\Microsoft.mshtml.dll
+C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csproj.AssemblyReference.cache
