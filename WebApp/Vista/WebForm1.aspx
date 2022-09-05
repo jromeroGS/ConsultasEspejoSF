@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
     <style type="text/css">
         #form1 {
-            height: 435px;
-            width: 910px;
+            height: 841px;
+            width: 1133px;
             margin-right: 27px;
         }
     </style>
@@ -36,7 +36,7 @@
         <br />
         
             <div style="width: 602px; height: 219px; overflow:auto; z-index: 1; left: 29px; top: 191px; position: absolute;">
-                <asp:GridView ID="GridView1" runat="server" CaptionAlign="Bottom" ForeColor="#333333" style="z-index: 2; left: -3px; top: 0px; position: relative; height: 206px; width: 365px; margin-top: 0px" CellPadding="4" GridLines="None" HorizontalAlign="Justify" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                <asp:GridView ID="GridView1" ShowHeaderWhenEmpty="true" runat="server" CaptionAlign="Bottom" ForeColor="#333333" style="z-index: 2; left: -3px; top: 0px; position: relative; height: 206px; width: 365px; margin-top: 0px" CellPadding="4" GridLines="None" HorizontalAlign="Justify" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -49,11 +49,24 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
 
+                    <Columns>
+                    <asp:TemplateField HeaderText="Detalle">
+                    <itemTemplate><asp:LinkButton ID="LnkDet" Text="VerDetalle" runat="server" CommandArgument='<%# Eval("ID") %>' OnClick="LnkDet_Click"/></itemTemplate></asp:TemplateField>
+                    </Columns>
+                    <Columns>
+                    <asp:TemplateField HeaderText="Nro">
+                    <ItemTemplate>
+                    <%# Container.DataItemIndex + 1%>                                                             
+                    </ItemTemplate>
+                    </asp:TemplateField>
+                    </Columns>
+                   
         </asp:GridView>
             </div>
         
-        <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 643px; top: 193px; position: absolute; height: 213px; width: 258px" ScrollBars ="Auto">
-            <asp:GridView ID="GridView2" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 639px; top: 171px; position: absolute; height: 199px; width: 465px" ScrollBars ="Auto">
+            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+            <asp:GridView ID="GridView2" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="31px" Width="420px">
                 <AlternatingRowStyle BackColor="White" />
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -65,7 +78,65 @@
                 <SortedAscendingHeaderStyle BackColor="#246B61" />
                 <SortedDescendingCellStyle BackColor="#D4DFE1" />
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
+                <Columns>
+                    <asp:TemplateField HeaderText="Nro">
+                        <ItemTemplate>
+                            <%# Container.DataItemIndex + 1%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <EmptyDataTemplate>
+                    <b>No Existen Registros !!!</b>
+                </EmptyDataTemplate>
             </asp:GridView>
+        </asp:Panel>
+        
+        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: 44px; top: 369px; position: absolute; height: 163px; width: 464px; margin-left: 596px" ScrollBars ="Auto">
+            <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+            <asp:GridView ID="GridView3" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="16px" Width="422px">
+                <AlternatingRowStyle BackColor="White" />
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                <Columns>
+                    <asp:TemplateField HeaderText="Nro">
+                        <ItemTemplate>
+                            <%# Container.DataItemIndex + 1%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </asp:Panel>
+        
+        <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 644px; top: 584px; position: absolute; height: 208px; width: 460px" ScrollBars ="Auto">
+            <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+            <asp:GridView ID="GridView4" runat="server" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" Width="421px">
+                <FooterStyle BackColor="White" ForeColor="#333333" />
+                <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="White" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                <SortedAscendingHeaderStyle BackColor="#487575" />
+                <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                <SortedDescendingHeaderStyle BackColor="#275353" />
+
+                <Columns>
+                    <asp:TemplateField HeaderText="Nro">
+                        <ItemTemplate>
+                            <%# Container.DataItemIndex + 1%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <br />
         </asp:Panel>
         
     </form>

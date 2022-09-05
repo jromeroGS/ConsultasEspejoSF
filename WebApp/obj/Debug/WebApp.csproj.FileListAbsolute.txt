@@ -656,3 +656,8 @@ C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csproj.CoreC
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.dll
 C:\Users\calannac\Desktop\ConsultasEspejoSF\WebApp\obj\Debug\WebApp.pdb
+C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.Common.dll
+C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.License.dll
+C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.Pdf.dll
+C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Spire.XLS.dll
+C:\Users\Adriana\Desktop\ConsultasEspejoSF\WebApp\bin\Microsoft.mshtml.dll

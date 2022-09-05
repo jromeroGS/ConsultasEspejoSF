@@ -185,7 +185,7 @@ namespace WebApp.Controlador
                 case "Casos":
                     nombreObjeto = "[Case] Caso";
                     //nombrefiltro = "CaseNumber";
-                    cadenaSeleccion = "Caso.CaseNumber NumeroCaso,Caso.Status Estado,Caso.Subject Asunto," 
+                    cadenaSeleccion = "Caso.ID ID,Caso.CaseNumber NumeroCaso,Caso.Status Estado,Caso.Subject Asunto," 
                         +" Caso.Description Descripcion, Caso.Country_Claim__c PaisReclamacion, Caso.Tipo_de_soluci_n__c TipoSolucion,"
                         +" Caso.Priority Prioridad, Caso.CreatedDate__c FechaDeApertura, Caso.ClosedDate__c FechaDeCierre,"
                         +" Caso.FreelanceName__c NombreFreelance, Tipificacion.Name DetalleTipoSolicitud,"
