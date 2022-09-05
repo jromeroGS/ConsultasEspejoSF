@@ -15,7 +15,7 @@
     </style>
 </head>
 <body style="background-color:#77acd2">
-    <asp:Image ID="Image1" runat="server" Height="250px" Width="360px" src="./logo.png" style="margin-left:600px; margin-top:50px"/>
+    <asp:Image ID="Image1" runat="server" Height="250px" Width="360px" src="./logo.png" style="margin-left:650px; margin-top:50px"/>
 
 
 <form id="form1" runat="server" enableviewstate="True" contenteditable="false">
