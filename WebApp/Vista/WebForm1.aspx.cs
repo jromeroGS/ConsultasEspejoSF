@@ -90,10 +90,13 @@ namespace WebApp
             GridView2.Visible = false;
             GridView3.Visible = false;
             GridView4.Visible = false;
+            GridView5.Visible = false;
+
 
             Label4.Visible = false;
             Label5.Visible = false;
             Label6.Visible = false;
+            Label7.Visible = false;
 
 
             String Lista1 = DDLObjeto.SelectedItem.ToString();
@@ -179,6 +182,13 @@ namespace WebApp
             String queryDet2 = "";
             String queryDet3 = "";
             String queryDet4 = "";
+            String queryDet5 = "";
+
+            Label4.Text = "";
+            Label5.Text = "";
+            Label6.Text = "";
+            Label7.Text = "";
+
             SqlConnection conexion = conect.Conection();
             conexion.Open();
 
@@ -190,14 +200,21 @@ namespace WebApp
             {
                 case "Oportunidad":
                     queryDet2 = "SELECT tipoDeDocumento__c TipoDocumento,Name Nombre,DateTimeCreated__c FechaCreación, CreatedById CreadoPor, Download__c Cloud, sequence__c Secuencia, PreviewDownload__c Ver FROM DragDropToCloudCloudDocuments__c WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
+                    Label4.Text = "CLOUD DOCUMENTS";
                     break;
                 case "Tercero":
-                    queryDet2 = "SELECT pais.name País, LocationCityName__c Ciudad, Suc.Name Dirección, AddressName__c FROM PartyAddress__c Suc LEFT JOIN LOCATION__C pais ON Suc.CountryId__c = pais.id WHERE PartyId__c = '" + idSeleccion + "' ORDER BY Suc.Name";
-                    queryDet3 = "SELECT pais.name País, MarcaB.Name Consecutivo, Marca.Name, BRAND_ID__c Código_de_Marca, CLASIFICATION__c Clasificación FROM PartyByBrand__c MarcaB LEFT JOIN BRAND__c Marca ON MarcaB.BrandId__c = Marca.Id LEFT JOIN LOCATION__C pais ON Marca.CountryId__c = pais.id WHERE PartyId__c = '" + idSeleccion + "' ORDER BY Marca.Name";
+                    queryDet2 = "SELECT pais.name País, MarcaB.Name Consecutivo, Marca.Name, BRAND_ID__c Código_de_Marca, CLASIFICATION__c Clasificación FROM PartyByBrand__c MarcaB LEFT JOIN BRAND__c Marca ON MarcaB.BrandId__c = Marca.Id LEFT JOIN LOCATION__C pais ON Marca.CountryId__c = pais.id WHERE PartyId__c = '" + idSeleccion + "' ORDER BY Marca.Name";
+                    Label4.Text = "TERCEROS Y/O MARCAS RELACIONADAS";
+                    queryDet3 = "SELECT pais.name País, LocationCityName__c Ciudad, Suc.Name Dirección, AddressName__c FROM PartyAddress__c Suc LEFT JOIN LOCATION__C pais ON Suc.CountryId__c = pais.id WHERE PartyId__c = '" + idSeleccion + "' ORDER BY Suc.Name";
+                    Label5.Text = "SUCURSALES DE TERCEROS";
+                    queryDet4 = "SELECT Name Consecutivo, ContactType__c TipoContacto, ContactPointValue__c Punto_de_Contacto FROM PartyContactPoint__c WHERE PartyId__c = '" + idSeleccion + "' ORDER BY Name";
+                    Label6.Text = "PUNTOS DE CONTACTO";
+
                     //queryDet4 = "SELECT pais.name País, MarcaB.Name Consecutivo, Marca.Name, BRAND_ID__c Código_de_Marca, CLASIFICATION__c Clasificación FROM PartyByBrand__c MarcaB LEFT JOIN BRAND__c Marca ON MarcaB.BrandId__c = Marca.Id LEFT JOIN LOCATION__C pais ON Marca.CountryId__c = pais.id WHERE PartyId__c = '" + idSeleccion + "' ORDER BY Marca.Name";
                     break;
                 case "Cuenta":
                     queryDet2 = "SELECT CaseNumber NúmeroCaso, SolutionGD__c Solución, Solution_Detail__c Detalle, Caso.RecordTypeId TipoRegistroCaso,Status Estado, Caso.CreatedDate FechaApertura, Caso.ClosedDate FechaCierre FROM [Case] Caso INNER JOIN ACCOUNT cuenta ON Caso.AccountId=Cuenta.id WHERE AccountId = '" + idSeleccion + "' ORDER BY Caso.CaseNumber";
+                    Label4.Text = "CASOS";
                     break;
                 case "Casos":
                     queryDet2 = "SELECT Cloud.Name, Cloud.DragDropToCloudFolderId__c, Cloud.Download__c Descargar, Cloud.tipoDeDocumento__c TipoDocumento FROM DragDropToCloudCloudDocuments__c Cloud INNER JOIN [Case] Caso ON Cloud.Caso__c = Caso.id WHERE Caso.id = '" + idSeleccion + "'";
@@ -206,13 +223,17 @@ namespace WebApp
                     Label5.Text = "COMENTARIOS DEL CASO";
                     queryDet4 = "SELECT ToAddress DirecciónPara, Subject Asunto, TextBody, Status Estado FROM [EmailMessage] WHERE ParentId = '" + idSeleccion + "'";
                     Label6.Text = "CORREOS ELECTRONICOS";
+                    queryDet5 = "SELECT Status Estado, Subject Asunto, Description Descripcion, ActivityDate FechaVencimiento, Priority Prioridad, RecordTypeId TipoRegistro FROM [Task] WHERE WhatId = '" + idSeleccion + "'";
+                    Label7.Text = "ACTIVIDADES";
                     break;
                 case "Consolidado de Ventas":
                     queryDet2 = "SELECT Id Id,Name CuotaConsolidado,PaymentValue__c ValorBruto, DiscountAmount__c Descuento, AmountWithTaxes__c ValorNeto,Tax1Value__c Impuesto, TotalBilling__c ValorTotal, PositionSAP__c PosiciónSap, PaymentNumber__c Posicion, BillingDate__c FechaFacturación, Billing_Date__c FechaCuota, FinancialCode__c CódigoFinanciero, Number_of_Initial_Contract__c ContratoInicial, SAP_Synchronization__c SincronizaciónSAP, ReferenceName__c Referencia, Business_line__c LíneaNegocio FROM PaymentByConsolidatedSales__c WHERE ConsolidatedSalesId__c = '" + idSeleccion + "' ORDER BY Name";
-                   
+                    Label4.Text = "CUOTAS DEL CONSOLIDADO";
+
                     break;
                 case "Datos de Facturación":
                     queryDet2 = "SELECT Name CuotaDato, ReferenceName__c,PaymentNumber__c ConsCuota,PaymentValue__c ValorBruto, DiscountAmount__c Descuento,AmountWithTaxes__c ValorNeto, Tax1Value__c Impuesto, TotalBilling__c TotalFacturar, BillingDate__c FechaFactura, Billing_Date__c FechaCuota, FinancialCode__c CódigoFinanciero FROM BillingDataByReferenceByPayment__c WHERE BillingDataId__c = '" + idSeleccion + "' ORDER BY Name";
+                    Label4.Text = "CUOTAS DEL DATO DE FACTURACION";
                     break;
 
             }
@@ -220,7 +241,7 @@ namespace WebApp
 
             if (queryDet2 != "")
             {
-                
+                Label4.Visible = true;
                 SqlCommand comando = new SqlCommand(queryDet2, conexion);
                 SqlDataAdapter data = new SqlDataAdapter(comando);
                 DataTable tabla = new DataTable();
@@ -232,7 +253,7 @@ namespace WebApp
 
             if (queryDet3 != "")
             {
-
+                Label5.Visible = true;
                 SqlCommand comando3 = new SqlCommand(queryDet3, conexion);
                 SqlDataAdapter data3 = new SqlDataAdapter(comando3);
                 DataTable tabla3 = new DataTable();
@@ -244,6 +265,7 @@ namespace WebApp
 
             if (queryDet4 != "")
             {
+                Label6.Visible = true;
                 SqlCommand comando4 = new SqlCommand(queryDet4, conexion);
                 SqlDataAdapter data4 = new SqlDataAdapter(comando4);
                 DataTable tabla4 = new DataTable();
@@ -252,8 +274,19 @@ namespace WebApp
                 GridView4.Visible = true;
                 GridView4.DataBind();
             }
+            if (queryDet5 != "")
+            {
+                Label7.Visible = true;
+                SqlCommand comando5 = new SqlCommand(queryDet5, conexion);
+                SqlDataAdapter data5 = new SqlDataAdapter(comando5);
+                DataTable tabla5 = new DataTable();
+                data5.Fill(tabla5);
+                GridView5.DataSource = tabla5;
+                GridView5.Visible = true;
+                GridView5.DataBind();
+            }
 
-                conexion.Close();
+            conexion.Close();
 
         }
     }
