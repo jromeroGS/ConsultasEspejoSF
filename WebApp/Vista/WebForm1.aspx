@@ -116,7 +116,7 @@
         
         <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 28px; top: 599px; position: absolute; height: 149px; width: 1100px" ScrollBars ="Auto">
             <asp:Label ID="Label6" runat="server" Text="Label" ForeColor="White"></asp:Label>
-            <asp:GridView ID="GridView4" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Width="504px" Height="1100px" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="GridView4" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Width="1100px" Height="150px" ForeColor="#333333" GridLines="None">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -166,6 +166,8 @@
         </asp:Panel>
         
         <asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 548px; top: 57px; position: absolute; height: 31px;" />
+        
+    <asp:Image ID="Image2" runat="server" src="./barra.png" style="margin-left:720px; margin-top:5px; z-index: 1; left: 550px; top: 0px; position: absolute; width: 52px; height: 600px;"/>
         
     </form>
 </body>
