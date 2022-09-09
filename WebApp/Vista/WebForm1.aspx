@@ -182,7 +182,7 @@
         
         <asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 646px; top: 68px; position: absolute; height: 31px; width: 151px;" BackColor="#3333FF" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
 
-        
+        <asp:Image ID="Image2" runat="server" src="./barra.png" style="margin-left:750px; margin-top:5px; z-index: 1; left: 550px; top: 0px; position: absolute; width: 40px; height: 800px;"/>
     </form>
 </body>
 
