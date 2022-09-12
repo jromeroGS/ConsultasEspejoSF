@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
     <style type="text/css">
         #form1 {
-            height: 973px;
-            width: 1133px;
+            height: 1161px;
+            width: 1249px;
             margin-right: 27px;
         }
     </style>
@@ -18,7 +18,8 @@
 
 
 <form id="form1" runat="server" enableviewstate="True" contenteditable="false">
-   <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:200px; margin-top:10px; z-index: 1; left: 618px; top: -3px; position: absolute; width: 219px; height: 98px;" BackColor="White" BorderColor="Blue" BorderStyle="Solid"/>
+   
+    <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:200px; margin-top:10px; z-index: 1; left: 618px; top: -3px; position: absolute; width: 219px; height: 98px;" BackColor="White" BorderColor="Blue" BorderStyle="Solid"/>
         <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Consultar" Text="Consultar" style="z-index: 1; left: 510px; top: 68px; position: absolute; height: 31px; width: 131px;" BackColor="#3333FF" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" Font-Italic="True" />
         &nbsp;<asp:DropDownList ID="DDLObjeto"  OnSelectedIndexChanged="DDLObjeto_SelectedIndexChanged" AutoPostBack="true" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 217px; top: 25px; position: absolute"></asp:DropDownList>
         
@@ -33,13 +34,15 @@
         <br />
         
             <div style="width: 1231px; height: 176px; overflow:auto; z-index: 1; left: 20px; top: 135px; position: absolute;">
-                <asp:GridView ID="GridView1" ShowHeaderWhenEmpty="true" runat="server" CaptionAlign="Bottom" ForeColor="#333333" style="z-index: 2; left: 2px; top: 0px; position: relative; height: 198px; width: 1213px; margin-top: 0px" CellPadding="2" GridLines="None" HorizontalAlign="Justify" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small">
+                <asp:GridView ID="GridView1" ShowHeaderWhenEmpty="True" runat="server" CaptionAlign="Bottom" ForeColor="#333333" style="z-index: 2; left: 2px; top: 0px; position: relative; height: 198px; width: 1213px; margin-top: 0px" CellPadding="2" GridLines="None" HorizontalAlign="Justify" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowCommand="GridView1_RowCommand">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#5D7B9D" BorderColor="White" BorderStyle="Solid" BorderWidth="2px" ForeColor="White" HorizontalAlign="Left" Wrap="True" Font-Bold="True" />
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BorderStyle="Solid" Wrap="False" BackColor="#F7F6F3" ForeColor="#333333" />
+            
+                    <SelectedRowStyle BackColor="#6699FF" Font-Italic="True" ForeColor="White" />
             
             <SortedAscendingCellStyle BackColor="#E9E7E2" />
             <SortedAscendingHeaderStyle BackColor="#506C8C" />
@@ -48,17 +51,16 @@
 
                     <Columns>
                     <asp:TemplateField HeaderText="Detalle">
-                    <itemTemplate><asp:LinkButton ID="LnkDet" Text="Ver Listas" runat="server" CommandArgument='<%# Eval("ID") %>' OnClick="LnkDet_Click"/></itemTemplate></asp:TemplateField>
+                    <itemTemplate><asp:LinkButton ID="LnkDet" Text="Ver Listas" forecolor="#3333FF" runat="server"   CommandArgument='<%# Eval("ID") %>' OnClick="LnkDet_Click"/></itemTemplate></asp:TemplateField>
 <asp:TemplateField HeaderText="Nro"><ItemTemplate>
                     <%# Container.DataItemIndex + 1%>                                                             
                     
 </ItemTemplate>
 </asp:TemplateField>
+                    
                     </Columns>
                    
-                   <selectedrowstyle backcolor="RED"
-         forecolor="DarkBlue"
-         font-bold="true"/> 
+                
         </asp:GridView>
             </div>
         
@@ -180,9 +182,9 @@
     </asp:Panel>
         <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 20px; top: 79px; position: absolute; height: 16px; width: 184px;" Text="Criterio de Búsqueda" Font-Italic="True" ForeColor="White" Font-Bold="True" Font-Names="Verdana" Font-Size="Small"></asp:Label>
         
-        <asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 646px; top: 68px; position: absolute; height: 31px; width: 151px;" BackColor="#3333FF" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
+        <asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 646px; top: 68px; position: absolute; height: 31px; width: 151px;" BackColor="#33CC33" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
 
-        <asp:Image ID="Image2" runat="server" src="./barra.png" style="margin-left:750px; margin-top:5px; z-index: 1; left: 550px; top: 0px; position: absolute; width: 40px; height: 800px;"/>
+        
     </form>
 </body>
 

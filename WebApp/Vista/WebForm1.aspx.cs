@@ -53,7 +53,7 @@ namespace WebApp
             DDLObjeto.DataValueField = "Id_Objeto";
             DDLObjeto.DataBind();
             DDLObjeto.Items.Insert(0, new ListItem("Seleccione el Objeto", "0"));
-
+            
             //GridView1.Columns.Clear();
             GridView1 = null;
             GridView2 = null;
@@ -125,12 +125,6 @@ namespace WebApp
 
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-
-        }
         protected void Exportar_Excel(object sender, EventArgs e)
         {
             try
@@ -184,6 +178,11 @@ namespace WebApp
             GridView4 = null;
             GridView5 = null;
             GridView6 = null;
+            Label4.Text = "";
+            Label5.Text = "";
+            Label6.Text = "";
+            Label7.Text = "";
+            Label8.Text = "";
             LlenarDDLFiltro(DDLObjeto.SelectedValue);
 
         }
@@ -217,7 +216,7 @@ namespace WebApp
             //comando.CommandText = "spConsCuentaOp";
             comando.Parameters.Add("@ValObjeto", SqlDbType.VarChar).Value = idSeleccion;*/
 
-
+            
             switch (Lista1)
             {
                 case "Oportunidad":
@@ -225,7 +224,7 @@ namespace WebApp
                     Label4.Text = "CLOUD DOCUMENTS";
                     queryDet3 = "SELECT Cons.Name Consolidado, Cons.Contract_Code__c Número_de_Contrato, Cons.SalesDocument__c Contrato_Factura, Cons.TotalPaymentValue__c ValorBruto, Cons.DiscountAmount__c Descuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c Impuesto, Cons.Date_First_Installment__c FechaAFacturar, Medio.Name Medio_Pago, PartyNumber__c ClienteUnico, BusinessName__c Razón_Social, Email_Facturacion__c Email, IdentityTxt__c Identificación, Direccion_facturacion__c Dirección_Facturación, Ciu.Name Ciudad, Pais.Name País FROM ConsolidatedSales__c Cons INNER JOIN Consolidated_by_Opportunity__c ConsXO ON Cons.Id = ConsXO.Consolidated_Sales__c LEFT JOIN Collection_Agent__c Medio ON Cons.Collection_Agent__c = Medio.Id LEFT JOIN Location__c Ciu ON Ciu.Id= Cons.City_Operator_Phone__c LEFT JOIN Location__c Pais on Pais.Id=Cons.Country__c WHERE ConsXO.Opportunity__c = '" + idSeleccion + "' ORDER BY Cons.Id";
                     Label5.Text = "CONSOLIDADO DE VENTAS";
-                    queryDet4 = "SELECT Act.Name Activo, Act.Status Estado, Pro.Name Nombre_Producto, IdPurchase2__c Aviso, Estado_suscripcion__c EstadoSuscripción, Monthly_value__c ValorMensual, Date_Nextbilling__c FechaPróxFact, InstallDate FechaInicialUso,  UsageEndDate FechaFinalUso, PurchaseDate FechaDeCompra, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación, FigurationNameTxtAndIdPurchase2__c NombreFiguración FROM Asset Act INNER JOIN Product2 Pro ON Act.Product2Id = Pro.Id WHERE Act.Oportunidad_relacionada__c = '" + idSeleccion + "' ORDER BY Act.Id";
+                    queryDet4 = "SELECT Act.Name Activo, Act.Status Estado, Pro.Name Nombre_Producto, IdPurchase2__c Aviso, Estado_suscripcion__c EstadoSuscripción, Monthly_value__c ValorMensual, Date_Nextbilling__c FechaPróxFact, InstallDate FechaInicialUso,  UsageEndDate FechaFinalUso, PurchaseDate FechaDeCompra, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación, AnualPayment__c PagoAnual, FigurationNameTxtAndIdPurchase2__c NombreFiguración FROM Asset Act INNER JOIN Product2 Pro ON Act.Product2Id = Pro.Id WHERE Act.Oportunidad_relacionada__c = '" + idSeleccion + "' ORDER BY Act.Id";
                     Label6.Text = "ACTIVOS";
                     /*queryDet3 = "SELECT  FROM ConsolidateSales__C WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
                     Label5.Text = "DATOS DE FACTURACION";*/
@@ -243,9 +242,9 @@ namespace WebApp
                 case "Cuenta":
                     queryDet2 = "SELECT CaseNumber NúmeroCaso, SolutionGD__c Solución, Solution_Detail__c Detalle, Detalle_tipo_de_solicitud__c Detalle_Tipo_Solicitud,Status Estado, Caso.CreatedDate FechaApertura, Caso.ClosedDate FechaCierre, Usuario.Name Propietario FROM [Case] Caso INNER JOIN ACCOUNT cuenta ON Caso.AccountId=Cuenta.id INNER JOIN [User] Usuario ON Caso.OwnerId = Usuario.id WHERE Caso.AccountId = '" + idSeleccion + "' ORDER BY Caso.CaseNumber";
                     Label4.Text = "CASOS";
-                    queryDet3 = "SELECT Opor.NAME NombreOportunidad, Ter.NAME NombreTercero, StageName Etapa, FirstDateReportSales__c Fecha_de_Cierre, Contract_code__c Número_de_Contrato, LiveOpportu__c OportViva, Amount Valor_Neto, Type_of_contract__c Tipo_de_Contrato FROM OPPORTUNITY as Opor INNER JOIN Territorio__c as Ter on opor.Territory__c = Ter.Id WHERE Opor.AccountId = '" + idSeleccion + "' ORDER BY Opor.Id";
+                    queryDet3 = "SELECT Opor.NAME NombreOportunidad, Ter.NAME NombreTercero, StageName Etapa, FirstDateReportSales__c Fecha_de_Cierre, Contract_code__c Número_de_Contrato, LiveOpportu__c OportViva, Amount Valor_Neto, Type_of_contract__c Tipo_de_Contrato, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LegalvalidationDate__c Fecha_ValidaciónJur FROM OPPORTUNITY as Opor INNER JOIN Territorio__c as Ter on opor.Territory__c = Ter.Id WHERE Opor.AccountId = '" + idSeleccion + "' ORDER BY Opor.Id";
                     Label5.Text = "OPORTUNIDADES";
-                    queryDet4 = "SELECT Act.Name NombreActivo, Act.Status Estado,Act.Price Precio,Act.Renovado__c Renovado, FigurationNameTxtAndIdPurchase2__c RazónFigur_IdAvis_Pdto_PartPdto_Ciud_Sec, Opor.Contract_code__c Contrato FROM ASSET as Act INNER JOIN Opportunity Opor ON Act.Oportunidad_relacionada__c = Opor.Id WHERE Act.AccountId = '" + idSeleccion + "' ORDER BY Act.Id";
+                    queryDet4 = "SELECT Act.Name NombreActivo, Act.Status Estado,Act.Price Precio,Act.Renovado__c Renovado, FigurationNameTxtAndIdPurchase2__c RazónFigur_IdAvis_Pdto_PartPdto_Ciud_Sec, Opor.Contract_code__c Contrato, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación, Act.AnualPayment__c PagoAnual FROM ASSET as Act INNER JOIN Opportunity Opor ON Act.Oportunidad_relacionada__c = Opor.Id WHERE Act.AccountId = '" + idSeleccion + "' ORDER BY Act.Id";
                     Label6.Text = "ACTIVOS";
                     queryDet5 = "SELECT Name Consolidado, Contract_Code__c Número_de_Contrato, SalesDocument__c Contrato_Factura, TotalPaymentValue__c ValorBruto, DiscountAmount__c Descuento, AmountWithTaxes__c ValorNeto, Tax1Value__c Impuesto, Date_First_Installment__c FechaAFacturar FROM ConsolidatedSales__c as Cons WHERE Cons.account__c = '" + idSeleccion + "' ORDER BY Cons.name";
                     Label7.Text = "CONSOLIDADOS DE VENTAS";
@@ -299,6 +298,7 @@ namespace WebApp
                 GridView3.DataSource = tabla;
                 GridView3.Visible = true;
                 GridView3.DataBind();
+
                 /*Label5.Visible = true;
                 SqlCommand comando3 = new SqlCommand();
                 comando3.Connection = conexion;
@@ -347,6 +347,46 @@ namespace WebApp
 
             conexion.Close();
 
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            /*Label9.Text = GridView1.SelectedRow.Cells[1].Text;
+           
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                if (row.RowIndex == GridView1.SelectedIndex)
+                {
+                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                        
+                    
+                }
+            }*/
+
+           /* GridViewRow row = GridView1.SelectedRow;
+
+            //
+            // Obtengo el id de la entidad que se esta editando
+            // en este caso de la entidad Person
+            //
+            int idselec = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Value);*/
+
+
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            /*if (e.CommandName == "Select")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                //
+                // Obtengo el id de la entidad que se esta editando
+                // en este caso de la entidad Person
+                //
+                int id = Convert.ToInt32(GridView1.DataKeys[index].Value);
+            }*/
         }
     }
 }

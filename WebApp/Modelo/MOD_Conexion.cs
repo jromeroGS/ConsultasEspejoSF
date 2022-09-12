@@ -28,7 +28,7 @@ namespace WebApp.Modelo
         }
         public String getFiltroCuenta(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
-            query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " where " + nombrefiltro + query2;
+            query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " LEFT JOIN [User] Usu ON Cuenta.OwnerId = Usu.Id WHERE " + nombrefiltro + query2;
             return query;
         }
         public String getFiltroOportunidad(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)

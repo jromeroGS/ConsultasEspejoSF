@@ -46,7 +46,7 @@ namespace WebApp.Controlador
                 case "Cuenta":
                     nombreObjeto = "ACCOUNT Cuenta";
                     //nombrefiltro = "Account_ID__c";
-                    cadenaSeleccion = "Name Nombre_Cuenta, Tipo_de_identificacion__c TipoIdent, PartyType__c TipoCuenta, Account_ID__c  Número_Cuenta, Party_Id__c Cliente_Único,  Identificacion__c Identificación, CommercialAddressP__c Dirección_Comercial, CountryParty__c País, Valor_Total_Mensual__c Valor_Mensual, Customer_Type__c Tipo_Cliente, ID ID";
+                    cadenaSeleccion = "Cuenta.Name Nombre_Cuenta, Cuenta.Tipo_de_identificacion__c TipoIdent, Cuenta.PartyType__c TipoCuenta, Cuenta.Account_ID__c  Número_Cuenta, Cuenta.Party_Id__c Cliente_Único,  Cuenta.Identificacion__c Identificación, CommercialAddressP__c Dirección_Comercial, CountryParty__c País, Valor_Total_Mensual__c Valor_Mensual, Customer_Type__c Tipo_Cliente, Cuenta.Equipo_de_ventas__c Equipo_de_Ventas, Usu.Name Propietario, Cuenta.ID ID";
 
                     switch (Lista2)
                     {
@@ -68,7 +68,7 @@ namespace WebApp.Controlador
                 case "Oportunidad":
                     nombreObjeto = "OPPORTUNITY Opor";
                     //nombrefiltro = "Opor.contract_code__c";
-                    cadenaSeleccion = "Ter.Name Razón_Social, Ter.PartyIdentification__c Identificación, Opor.Contract_code__c Contrato, Opor.StageName Etapa, Opor.Type_of_contract__c TipoCont, Opor.CustomerType__c TipoCliente,  Opor.NetValue__c ValorVenta, Opor.TotalDiscount__c	Descuento, Opor.Amount ValorNeto, Opor.TotalIVA__c TotalImpuesto, Opor.GrandTotal__c ValorTotal, CampaignName__c Campaña, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LiveOpportu__c OporViva, Opor.CommercialAddressP__c DirecciónComercial, Opor.CommercialPhoneP__c Telf, Opor.Principal_Commercial_Email2__c Email, Opor.Equipo_de_ventas__c EquipoVentas, Contact.Name Autorizante, Usu.NAME Propietario, Canal_structure__c CanalEstructura, LegalvalidationDate__c ValidaciónJurídica, Opor.ID ID";
+                    cadenaSeleccion = "Ter.Name Razón_Social, Ter.PartyIdentification__c Identificación, Opor.Contract_code__c Contrato, Opor.StageName Etapa, Opor.Type_of_contract__c TipoCont, Opor.CustomerType__c TipoCliente,  Opor.NetValue__c ValorVenta, Opor.TotalDiscount__c	Descuento, Opor.Amount ValorNeto, Opor.TotalIVA__c TotalImpuesto, Opor.GrandTotal__c ValorTotal, CampaignName__c Campaña, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LiveOpportu__c OporViva, Opor.CommercialAddressP__c DirecciónComercial, Opor.CommercialPhoneP__c Telf, Opor.Principal_Commercial_Email2__c Email, Opor.Equipo_de_ventas__c EquipoVentas, Contact.Name Autorizante, Usu.NAME Propietario, Canal_structure__c CanalEstructura, LegalvalidationDate__c Fecha_ValidaciónJurídica, Opor.ID ID";
                     switch (Lista2)
                     {
                         case "Identificación":
@@ -136,7 +136,7 @@ namespace WebApp.Controlador
                 case "Activos":
                     nombreObjeto = "ASSET Act";
                     //nombrefiltro = "OPPORTUNITY.contract_code__c";
-                    cadenaSeleccion = "Act.NAME NombreActivo, Act.STATUS EstadoActivo, Act.Url_Modificaciones__c UrlModificaciones, Act.Price Precio, Prod.name NombreProducto, Act.Date_Nextbilling__c FechaProxFacturación, Act.SubscripType__c TipoSuscripción, Act.Monthly_value__c ValorMensual, Act.InstallDate FechaInicialUso, Act.UsageEndDate FechaFinalUso, Act.Desactivation_Date__c FechaDesactivacion, Act.IdPurchase2__c IdAviso, Act.PurchaseDate FechaCompra, Act.ID ID";
+                    cadenaSeleccion = "Act.NAME NombreActivo, Act.STATUS EstadoActivo, Act.Url_Modificaciones__c UrlModificaciones, Act.Price Precio, Prod.name NombreProducto, Act.Date_Nextbilling__c FechaProxFacturación, Act.SubscripType__c TipoSuscripción, Act.Monthly_value__c ValorMensual, Act.InstallDate FechaInicialUso, Act.UsageEndDate FechaFinalUso, Act.Activate_date__c FechaActivación, Act.Desactivation_Date__c FechaDesactivacion, Act.IdPurchase2__c IdAviso, Act.PurchaseDate FechaCompra, Act.AnualPayment__c PagoAnual, Act.ID ID";
                     switch (Lista2)
                     {
                         case "Identificación":
