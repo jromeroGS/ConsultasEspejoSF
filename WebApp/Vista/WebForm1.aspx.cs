@@ -95,13 +95,14 @@ namespace WebApp
             GridView4.Visible = false;
             GridView5.Visible = false;
             GridView6.Visible = false;
-
+            GridView7.Visible = false;
 
             Label4.Visible = false;
             Label5.Visible = false;
             Label6.Visible = false;
             Label7.Visible = false;
             Label8.Visible = false;
+            Label9.Visible = false;
 
 
             String Lista1 = DDLObjeto.SelectedItem.ToString();
@@ -195,12 +196,14 @@ namespace WebApp
             String queryDet4 = "";
             String queryDet5 = "";
             String queryDet6 = "";
+            String queryDet7 = "";
 
             Label4.Text = "";
             Label5.Text = "";
             Label6.Text = "";
             Label7.Text = "";
             Label8.Text = "";
+            Label9.Text = "";
 
 
             SqlConnection conexion = conect.Conection();
@@ -220,9 +223,9 @@ namespace WebApp
             switch (Lista1)
             {
                 case "Oportunidad":
-                    queryDet2 = "SELECT tipoDeDocumento__c TipoDocumento,Name Nombre,DateTimeCreated__c Fecha_Creación, CreatedById Creado_Por, Download__c Cloud, sequence__c Secuencia, PreviewDownload__c Ver FROM DragDropToCloudCloudDocuments__c WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
+                    queryDet2 = "SELECT tipoDeDocumento__c TipoDocumento,Name Nombre,DateTimeCreated__c Fecha_Creación, CreatedById Creado_Por, Download__c Cloud, sequence__c Secuencia, PreviewDownload__c AS URL, Ver__c Ver FROM DragDropToCloudCloudDocuments__c WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
                     Label4.Text = "CLOUD DOCUMENTS";
-                    queryDet3 = "SELECT Cons.Name Consolidado, Cons.Contract_Code__c Número_de_Contrato, Cons.SalesDocument__c Contrato_Factura, Cons.TotalPaymentValue__c ValorBruto, Cons.DiscountAmount__c Descuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c Impuesto, Cons.Date_First_Installment__c FechaAFacturar, Medio.Name Medio_Pago, PartyNumber__c ClienteUnico, BusinessName__c Razón_Social, Email_Facturacion__c Email, IdentityTxt__c Identificación, Direccion_facturacion__c Dirección_Facturación, Ciu.Name Ciudad, Pais.Name País FROM ConsolidatedSales__c Cons INNER JOIN Consolidated_by_Opportunity__c ConsXO ON Cons.Id = ConsXO.Consolidated_Sales__c LEFT JOIN Collection_Agent__c Medio ON Cons.Collection_Agent__c = Medio.Id LEFT JOIN Location__c Ciu ON Ciu.Id= Cons.City_Operator_Phone__c LEFT JOIN Location__c Pais on Pais.Id=Cons.Country__c WHERE ConsXO.Opportunity__c = '" + idSeleccion + "' ORDER BY Cons.Id";
+                    queryDet3 = "SELECT Cons.Name Consolidado, Cons.Contract_Code__c Número_de_Contrato, Cons.SalesDocument__c Contrato_Factura, Cons.TotalPaymentValue__c  ValorBruto, Cons.DiscountAmount__c Descuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c Impuesto, Cons.Date_First_Installment__c FechaAFacturar, Medio.Name Medio_Pago, PartyNumber__c ClienteUnico, BusinessName__c Razón_Social, Email_Facturacion__c Email, IdentityTxt__c Identificación, Direccion_facturacion__c Dirección_Facturación, Ciu.Name Ciudad, Pais.Name País FROM ConsolidatedSales__c Cons INNER JOIN Consolidated_by_Opportunity__c ConsXO ON Cons.Id = ConsXO.Consolidated_Sales__c LEFT JOIN Collection_Agent__c Medio ON Cons.Collection_Agent__c = Medio.Id LEFT JOIN Location__c Ciu ON Ciu.Id= Cons.City_Operator_Phone__c LEFT JOIN Location__c Pais on Pais.Id=Cons.Country__c WHERE ConsXO.Opportunity__c = '" + idSeleccion + "' ORDER BY Cons.Id";
                     Label5.Text = "CONSOLIDADO DE VENTAS";
                     queryDet4 = "SELECT Act.Name Activo, Act.Status Estado, Pro.Name Nombre_Producto, IdPurchase2__c Aviso, Estado_suscripcion__c EstadoSuscripción, Monthly_value__c ValorMensual, Date_Nextbilling__c FechaPróxFact, InstallDate FechaInicialUso,  UsageEndDate FechaFinalUso, PurchaseDate FechaDeCompra, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación, AnualPayment__c PagoAnual, FigurationNameTxtAndIdPurchase2__c NombreFiguración FROM Asset Act INNER JOIN Product2 Pro ON Act.Product2Id = Pro.Id WHERE Act.Oportunidad_relacionada__c = '" + idSeleccion + "' ORDER BY Act.Id";
                     Label6.Text = "ACTIVOS";
@@ -251,6 +254,9 @@ namespace WebApp
 
                     queryDet6 = "SELECT Name Nombre_RF, Status__c Estado, Flow__c Flujo, Satisfaction_Level__c Nivel_de_Satisfacción, CallCounter__c Cant_Llamadas,  CloseDate__c Fecha_Cierre FROM Loyalty_Registry__c as Reg WHERE Reg.Account__c = '" + idSeleccion + "' ORDER BY Reg.Id";
                     Label8.Text = "REGISTROS DE FIDELIZACION";
+
+                    queryDet7 = "SELECT Name Nombre, Authorization_Level__c Rol, Identification_type__c TipoIdent, Identification_number__c Identificación, Email Correo, Address_1__c Dirección, Phone Teléfono, MobilePhone Celular FROM Contact as Cont  WHERE Cont.AccountId = '" + idSeleccion + "' ORDER BY Cont.name";
+                    Label9.Text = "CONTACTOS";
 
                     break;
                 case "Casos":
@@ -345,6 +351,18 @@ namespace WebApp
                 GridView6.DataBind();
             }
 
+            if (queryDet7 != "")
+            {
+                Label9.Visible = true;
+                SqlCommand comando = new SqlCommand(queryDet7, conexion);
+                SqlDataAdapter data = new SqlDataAdapter(comando);
+                DataTable tabla = new DataTable();
+                data.Fill(tabla);
+                GridView7.DataSource = tabla;
+                GridView7.Visible = true;
+                GridView7.DataBind();
+            }
+
             conexion.Close();
 
         }
@@ -387,6 +405,19 @@ namespace WebApp
                 //
                 int id = Convert.ToInt32(GridView1.DataKeys[index].Value);
             }*/
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            
+               /* if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    HyperLink link = new HyperLink();
+                    link.Text = "NUEVOLINK";
+                    link.NavigateUrl = "Navegar a: " + e.Row.DataItem;
+                    e.Row.Cells[ColumnIndex].Controls.Add(link);
+            }*/
+            
         }
     }
 }

@@ -46,7 +46,7 @@ namespace WebApp.Controlador
                 case "Cuenta":
                     nombreObjeto = "ACCOUNT Cuenta";
                     //nombrefiltro = "Account_ID__c";
-                    cadenaSeleccion = "Cuenta.Name Nombre_Cuenta, Cuenta.Tipo_de_identificacion__c TipoIdent, Cuenta.PartyType__c TipoCuenta, Cuenta.Account_ID__c  Número_Cuenta, Cuenta.Party_Id__c Cliente_Único,  Cuenta.Identificacion__c Identificación, CommercialAddressP__c Dirección_Comercial, CountryParty__c País, Valor_Total_Mensual__c Valor_Mensual, Customer_Type__c Tipo_Cliente, Cuenta.Equipo_de_ventas__c Equipo_de_Ventas, Usu.Name Propietario, Cuenta.ID ID";
+                    cadenaSeleccion = "Cuenta.Name Nombre_Cuenta, Cuenta.Tipo_de_identificacion__c TipoIdent, Cuenta.PartyType__c TipoCuenta, Cuenta.Account_ID__c  Número_Cuenta, Cuenta.Party_Id__c Cliente_Único,  Cuenta.Identificacion__c Identificación, CommercialAddressP__c Dirección_Comercial, CountryParty__c País, Valor_Total_Mensual__c Valor_Mensual, Customer_Type__c Tipo_Cliente, Cuenta.Equipo_de_ventas__c Equipo_de_Ventas, Cuenta.Tramo_m_ximo__c TramoMáximo, Nota_de_Riesgo_Financiero__c Nota_Riesgo_Financiero, Usu.Name Propietario, UsuMod.name UltimaModificaciónPor, Cuenta.LastModifiedDate UltimaFechaModificación, Cuenta.ID ID";
 
                     switch (Lista2)
                     {
@@ -136,7 +136,7 @@ namespace WebApp.Controlador
                 case "Activos":
                     nombreObjeto = "ASSET Act";
                     //nombrefiltro = "OPPORTUNITY.contract_code__c";
-                    cadenaSeleccion = "Act.NAME NombreActivo, Act.STATUS EstadoActivo, Act.Url_Modificaciones__c UrlModificaciones, Act.Price Precio, Prod.name NombreProducto, Act.Date_Nextbilling__c FechaProxFacturación, Act.SubscripType__c TipoSuscripción, Act.Monthly_value__c ValorMensual, Act.InstallDate FechaInicialUso, Act.UsageEndDate FechaFinalUso, Act.Activate_date__c FechaActivación, Act.Desactivation_Date__c FechaDesactivacion, Act.IdPurchase2__c IdAviso, Act.PurchaseDate FechaCompra, Act.AnualPayment__c PagoAnual, Act.ID ID";
+                    cadenaSeleccion = "Act.NAME NombreActivo, Act.STATUS EstadoActivo, Act.Url_Modificaciones__c UrlModificaciones, Act.Price Precio, Prod.name NombreProducto, Act.Date_Nextbilling__c FechaProxFacturación, Act.SubscripType__c TipoSuscripción, Act.Monthly_value__c ValorMensual, Act.InstallDate FechaInicialUso, Act.UsageEndDate FechaFinalUso, Act.Activate_date__c FechaActivación, Act.Desactivation_Date__c FechaDesactivacion, Act.IdPurchase2__c IdAviso, Act.PurchaseDate FechaCompra, Act.AnualPayment__c PagoAnual, Usu.name UltimaModificaciónPor, Act.LastModifiedDate UltimaFechaModificación,  Act.ID ID";
                     switch (Lista2)
                     {
                         case "Identificación":
@@ -191,8 +191,8 @@ namespace WebApp.Controlador
                         + " Caso.FreelanceName__c NombreFreelance, Tipificacion.Name DetalleTipoSolicitud,"
                         + " Caso.old_case__c Antiguedad_Dias, Caso.Origin OrigenDelCaso, Caso.Correo_electronico_del_contacto__c CorreoElectronicoDelContacto,"
                         + " Cuenta.Name NombreDeLaCuenta, TipoRegistro.Name TipoDeRegistroDelCaso, CasoRelacionado.CaseNumber CasoPrincipal,"
-                        + " Caso.RecurrentCaseByEmail2__c CasoReincidentePorCorreo, Caso.Solution_Detail__c Detalle_de_la_Solución,"
-                        + " ISNULL(UsuarioCreadoPor.name,ColaCreadoPor.name ) CreadoPor,"
+                        + " Caso.RecurrentCaseByEmail2__c CasoReincidentePorCorreo, Caso.Solution_Detail__c Detalle_de_la_Solución, Caso.OwnerArea__c AreaPropietario,"
+                        + " ISNULL(UsuarioCreadoPor.name,ColaCreadoPor.name ) CreadoPor, UsuarioCerrado.name CerradoPor,"
                         + " ISNULL(UsuarioPropietario.name,ColaPropietario.name) Propietario, Caso.ID ID";
                     switch (Lista2)
                     {
@@ -229,6 +229,27 @@ namespace WebApp.Controlador
                     }
 
                     query = conexion.getProductos(cadenaSeleccion, nombreObjeto, nombrefiltro, Texto1);
+                    break;
+                case "Movimiento de Producción":
+                    nombreObjeto = "Movimiento_produccion__c Mov";
+                    cadenaSeleccion = "Mov.Tipo_movimiento__c TipoMovimiento, Mov.Etapa__c Etapa, Usu.Name UsuarioResponsable, Ref.Name Referencia,  Mov.Contact_Name_WS__c Nombre_Contacto_WS,  Mov.Email_contact_WS__c CorreoElectrónico, Cuenta.Name Cuenta, Act.Name Activo, Opor.Contract_code__c Contrato, UsuGes.Name ResponsableGestiónCliente, Advertisement_Id__c IdAnuncio, UrlImaginator__c URLImag, Mov.ID ID";
+
+                    switch (Lista2)
+                    {
+                        case "Razón Social":
+                            nombrefiltro = "Cuenta.name";
+                            query2 = " like '%" + Texto1 + "%' ";
+                            break;
+                        case "Usuario Responsable":
+                            nombrefiltro = "Usu.name"; 
+                             query2 = " like '%" + Texto1 + "%' ";
+                            break;
+                        case "Contrato":
+                            nombrefiltro = "Opor.Contract_Code__c";
+                            query2 = "= '" + Texto1 + "'";
+                            break;
+                    }
+                    query = conexion.getMovProduccion(cadenaSeleccion, nombreObjeto, nombrefiltro, query2);
                     break;
             }
 

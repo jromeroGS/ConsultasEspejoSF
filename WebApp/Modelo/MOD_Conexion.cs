@@ -28,7 +28,7 @@ namespace WebApp.Modelo
         }
         public String getFiltroCuenta(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
-            query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " LEFT JOIN [User] Usu ON Cuenta.OwnerId = Usu.Id WHERE " + nombrefiltro + query2;
+            query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto + " LEFT JOIN [User] Usu ON Cuenta.OwnerId = Usu.Id LEFT JOIN [User] UsuMod ON Cuenta.LastModifiedById = UsuMod.Id WHERE " + nombrefiltro + query2;
             return query;
         }
         public String getFiltroOportunidad(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
@@ -48,7 +48,7 @@ namespace WebApp.Modelo
         }
         public String getActivos(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
-            query = "SELECT " + cadenaSeleccion + " FROM PARTY__C Ter INNER JOIN ACCOUNT Cuenta ON Cuenta.Tercero__c = Ter.Id INNER JOIN OPPORTUNITY Opor ON Opor.accountid = Cuenta.id INNER JOIN QUOTE Cot ON Cot.OpportunityId = Opor.ID INNER JOIN QUOTELINEITEM ProXCot ON ProXCot.QuoteId = Cot.ID INNER JOIN PRODUCT2 prod ON ProXCot.Product2Id = prod.Id INNER JOIN ASSET Act ON ProXCot.Activo_producido__c = Act.ID where " + nombrefiltro + query2;
+            query = "SELECT " + cadenaSeleccion + " FROM PARTY__C Ter INNER JOIN ACCOUNT Cuenta ON Cuenta.Tercero__c = Ter.Id INNER JOIN OPPORTUNITY Opor ON Opor.accountid = Cuenta.id INNER JOIN QUOTE Cot ON Cot.OpportunityId = Opor.ID INNER JOIN QUOTELINEITEM ProXCot ON ProXCot.QuoteId = Cot.ID INNER JOIN PRODUCT2 prod ON ProXCot.Product2Id = prod.Id INNER JOIN ASSET Act ON ProXCot.Activo_producido__c = Act.ID LEFT JOIN [User] Usu ON Act.LastModifiedById = Usu.Id where " + nombrefiltro + query2;
             return query;
         }
         public String getConsolidadoVentas(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
@@ -65,6 +65,7 @@ namespace WebApp.Modelo
                     + " LEFT JOIN RecordType TipoRegistro ON Caso.RecordTypeId = TipoRegistro.Id"
                     + " LEFT JOIN [GROUP] ColaPropietario ON ColaPropietario.ID = Caso.OwnerId LEFT JOIN [user] UsuarioPropietario ON UsuarioPropietario.id=Caso.OwnerId"
                     + " LEFT JOIN [GROUP] ColaCreadoPor ON ColaCreadoPor.ID = Caso.CreatedById LEFT JOIN [user] UsuarioCreadoPor ON UsuarioCreadoPor.id=Caso.CreatedById"
+                    + " LEFT JOIN [user] UsuarioCerrado ON UsuarioCerrado.Id = Caso.ClosedBy__c"
                     + " WHERE " + nombrefiltro + query2;
             return query;
 
@@ -74,6 +75,16 @@ namespace WebApp.Modelo
             query = "SELECT " + cadenaSeleccion + " FROM " + nombreObjeto
                 + " INNER JOIN ProductPartsByProduct__c ParProdXProd ON Prod.ProductPartsByProduct__c= ParProdXProd.Id"
                 + " where " + nombrefiltro + " like '%" + query2 + "%' ";
+            return query;
+        }
+        public String getMovProduccion(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
+        {
+            query = "SELECT " + cadenaSeleccion + " FROM Movimiento_produccion__c Mov LEFT JOIN [User] Usu ON Mov.Usuario_Responsable__c = Usu.Id " +
+                " INNER JOIN ACCOUNT Cuenta ON Mov.Cuenta__c = Cuenta.Id INNER JOIN OPPORTUNITY Opor ON Mov.Opportunity__c = Opor.Id INNER JOIN ASSET Act On Mov.Activo__c = Act.Id " +
+                " LEFT JOIN [User] UsuGes ON UsuGes.Id = Mov.Responsible_Organized_Content__c "+
+                " LEFT JOIN Reference__c Ref ON Ref.Id = Mov.Reference__c " +
+                
+                " WHERE " + nombrefiltro + query2 + " ORDER BY Mov.name";
             return query;
         }
 
