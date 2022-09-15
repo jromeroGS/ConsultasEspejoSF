@@ -16,9 +16,8 @@ using System.IO;
 using WebApp.Modelo;
 using WebApp.Controlador;
 using System.Web.UI.HtmlControls;
-
-
-
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace WebApp
 {
@@ -86,39 +85,65 @@ namespace WebApp
 
         protected void Consultar(object sender, EventArgs e)
         {
+            try
+            {
+                SqlConnection conexion = conect.Conection();
+                conexion.Open();
 
-            SqlConnection conexion = conect.Conection();
-            conexion.Open();
+                GridView2.Visible = false;
+                GridView3.Visible = false;
+                GridView4.Visible = false;
+                GridView5.Visible = false;
+                GridView6.Visible = false;
+                GridView7.Visible = false;
 
-            GridView2.Visible = false;
-            GridView3.Visible = false;
-            GridView4.Visible = false;
-            GridView5.Visible = false;
-            GridView6.Visible = false;
-            GridView7.Visible = false;
-
-            Label4.Visible = false;
-            Label5.Visible = false;
-            Label6.Visible = false;
-            Label7.Visible = false;
-            Label8.Visible = false;
-            Label9.Visible = false;
+                Label4.Visible = false;
+                Label5.Visible = false;
+                Label6.Visible = false;
+                Label7.Visible = false;
+                Label8.Visible = false;
+                Label9.Visible = false;
 
 
-            String Lista1 = DDLObjeto.SelectedItem.ToString();
-            String Lista2 = DDLFiltro.SelectedItem.ToString();
-            String Texto1 = TextBox1.Text;
-            String query = filtros.Filtros(Lista1, Lista2, Texto1);
+                String Lista1 = DDLObjeto.SelectedItem.ToString();
+                String Lista2 = DDLFiltro.SelectedItem.ToString();
+                String Texto1 = TextBox1.Text;
+                String query = filtros.Filtros(Lista1, Lista2, Texto1);
 
-            SqlCommand comando = new SqlCommand(query, conexion);
-            SqlDataAdapter data = new SqlDataAdapter(comando);
 
-            DataTable tabla = new DataTable();
-            data.Fill(tabla);
-            GridView1.DataSource = tabla;
-            //GridView1.Visible = true;
-            GridView1.DataBind();
-            conexion.Close();
+                /*string mensaje = "";
+                if (Lista2 == "Código")
+                {
+                    if (Regex.IsMatch(Texto1, @"^[0-9]+$"))
+                    {
+                        mensaje = "Correcto";
+                    }
+                        
+                    else
+                        MessageBox.Show("Debe digitar un Número ", "ERROR DE ESCRITURA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }*/
+
+                SqlCommand comando = new SqlCommand(query, conexion);
+                SqlDataAdapter data = new SqlDataAdapter(comando);
+
+                DataTable tabla = new DataTable();
+                data.Fill(tabla);
+                GridView1.DataSource = tabla;
+                //GridView1.Visible = true;
+                GridView1.DataBind();
+                conexion.Close();
+            }
+            catch(FormatException ex)
+            {
+                string error = ex.Message;
+                MessageBox.Show("Revise el valor ingresado y el filtro"+ error, "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                MessageBox.Show(error, "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -243,7 +268,7 @@ namespace WebApp
                     //queryDet4 = "SELECT pais.name País, MarcaB.Name Consecutivo, Marca.Name, BRAND_ID__c Código_de_Marca, CLASIFICATION__c Clasificación FROM PartyByBrand__c MarcaB LEFT JOIN BRAND__c Marca ON MarcaB.BrandId__c = Marca.Id LEFT JOIN LOCATION__C pais ON Marca.CountryId__c = pais.id WHERE PartyId__c = '" + idSeleccion + "' ORDER BY Marca.Name";
                     break;
                 case "Cuenta":
-                    queryDet2 = "SELECT CaseNumber NúmeroCaso, SolutionGD__c Solución, Solution_Detail__c Detalle, Detalle_tipo_de_solicitud__c Detalle_Tipo_Solicitud,Status Estado, Caso.CreatedDate FechaApertura, Caso.ClosedDate FechaCierre, Usuario.Name Propietario FROM [Case] Caso INNER JOIN ACCOUNT cuenta ON Caso.AccountId=Cuenta.id INNER JOIN [User] Usuario ON Caso.OwnerId = Usuario.id WHERE Caso.AccountId = '" + idSeleccion + "' ORDER BY Caso.CaseNumber";
+                    queryDet2 = "SELECT CaseNumber NúmeroCaso, SolutionGD__c Solución, Solution_Detail__c Detalle, Tipi.Name Detalle_Tipo_Solicitud,Status Estado, Caso.CreatedDate FechaApertura, Caso.ClosedDate FechaCierre, Usuario.Name Propietario FROM [Case] Caso INNER JOIN ACCOUNT cuenta ON Caso.AccountId=Cuenta.id INNER JOIN [User] Usuario ON Caso.OwnerId = Usuario.id LEFT JOIN Tipificacion__c Tipi ON Caso.Detalle_tipo_de_solicitud__c = Tipi.ID WHERE Caso.AccountId = '" + idSeleccion + "' ORDER BY Caso.CaseNumber";
                     Label4.Text = "CASOS";
                     queryDet3 = "SELECT Opor.NAME NombreOportunidad, Ter.NAME NombreTercero, StageName Etapa, FirstDateReportSales__c Fecha_de_Cierre, Contract_code__c Número_de_Contrato, LiveOpportu__c OportViva, Amount Valor_Neto, Type_of_contract__c Tipo_de_Contrato, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LegalvalidationDate__c Fecha_ValidaciónJur FROM OPPORTUNITY as Opor INNER JOIN Territorio__c as Ter on opor.Territory__c = Ter.Id WHERE Opor.AccountId = '" + idSeleccion + "' ORDER BY Opor.Id";
                     Label5.Text = "OPORTUNIDADES";

@@ -80,11 +80,23 @@ namespace WebApp.Modelo
         public String getMovProduccion(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
         {
             query = "SELECT " + cadenaSeleccion + " FROM Movimiento_produccion__c Mov LEFT JOIN [User] Usu ON Mov.Usuario_Responsable__c = Usu.Id " +
-                " INNER JOIN ACCOUNT Cuenta ON Mov.Cuenta__c = Cuenta.Id INNER JOIN OPPORTUNITY Opor ON Mov.Opportunity__c = Opor.Id INNER JOIN ASSET Act On Mov.Activo__c = Act.Id " +
-                " LEFT JOIN [User] UsuGes ON UsuGes.Id = Mov.Responsible_Organized_Content__c "+
+                " INNER JOIN ACCOUNT Cuenta ON Mov.Cuenta__c = Cuenta.Id " +
+                " INNER JOIN OPPORTUNITY Opor ON Mov.Opportunity__c = Opor.Id " +
+                " INNER JOIN ASSET Act On Mov.Activo__c = Act.Id " +
+                " INNER JOIN RECORDTYPE Rec On Mov.RecordTypeId = Rec.Id " +
+                " LEFT JOIN [User] UsuGes ON UsuGes.Id = Mov.Responsible_Organized_Content__c " +
                 " LEFT JOIN Reference__c Ref ON Ref.Id = Mov.Reference__c " +
                 
-                " WHERE " + nombrefiltro + query2 + " ORDER BY Mov.name";
+                " WHERE " + nombrefiltro + query2 + " AND Mov.createdDate > 2019-01-01 ORDER BY Mov.name";
+            return query;
+        }
+        public String getRegFidelizacion(String cadenaSeleccion, String nombreObjeto, String nombrefiltro, String query2)
+        {
+            query = "SELECT " + cadenaSeleccion + " FROM Loyalty_Registry__c Reg LEFT JOIN [User] Usu ON Reg.OwnerId = Usu.Id " +
+                " INNER JOIN ACCOUNT Cuenta ON Reg.Account__c = Cuenta.Id " +
+                " LEFT JOIN RECORDTYPE Rec On Reg.RecordTypeId = Rec.Id " +
+
+                " WHERE " + nombrefiltro + query2 + " ORDER BY Reg.name";
             return query;
         }
 

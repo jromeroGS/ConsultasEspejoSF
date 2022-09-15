@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
     <style type="text/css">
         #form1 {
-            height: 1613px;
+            height: 1868px;
             width: 1380px;
             margin-right: 27px;
         }
@@ -20,21 +20,21 @@
 <form id="form1" runat="server" enableviewstate="True" contenteditable="false">
    
         <asp:Button ID="Button1" runat="server" class="btn btn-outline-secondary" OnClick="Consultar" Text="Consultar" style="z-index: 1; left: 606px; top: 65px; position: absolute; height: 31px; width: 131px;" BackColor="#3333FF" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" Font-Italic="True" />
-        &nbsp;<asp:DropDownList ID="DDLObjeto"  OnSelectedIndexChanged="DDLObjeto_SelectedIndexChanged" AutoPostBack="true" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 217px; top: 25px; position: absolute"></asp:DropDownList>
+        &nbsp;<asp:DropDownList ID="DDLObjeto"  OnSelectedIndexChanged="DDLObjeto_SelectedIndexChanged" AutoPostBack="true" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 217px; top: 25px; position: absolute" Font-Names="Verdana" Font-Size="Small"></asp:DropDownList>
         
-        <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 24px; top: 33px; position: absolute; width: 180px;" Text="Seleccione el Objeto" Font-Bold="True" Font-Italic="True" Font-Size="Small" Font-Strikeout="False" ForeColor="White" Font-Names="Verdana"></asp:Label>
+        <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 24px; top: 33px; position: absolute; width: 180px; bottom: 282px;" Text="Seleccione el Objeto" Font-Bold="True" Font-Italic="True" Font-Size="Small" Font-Strikeout="False" ForeColor="White" Font-Names="Verdana"></asp:Label>
        
         
-        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 530px; top: 30px; position: absolute; width: 58px; height: 21px;" Text="Buscar" Font-Bold="True" Font-Italic="True" ForeColor="White"></asp:Label>
+        <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 530px; top: 30px; position: absolute; width: 58px; height: 21px;" Text="Buscar" Font-Bold="True" Font-Italic="True" ForeColor="White" Font-Names="Verdana" Font-Size="Small"></asp:Label>
   
-        <asp:DropDownList ID="DDLFiltro"  runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 217px; top: 70px; position: absolute"></asp:DropDownList>
+        <asp:DropDownList ID="DDLFiltro"  runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 217px; top: 70px; position: absolute" Font-Names="Verdana" Font-Size="Small"></asp:DropDownList>
        
         
         <br />
-        <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 24px; position: absolute; left: 606px; width: 414px;"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 24px; position: absolute; left: 606px; width: 414px;" BorderStyle="Solid"></asp:TextBox>
         <br />
     <asp:Panel ID="Panel7" runat="server">
-        <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:205px; margin-top:10px; z-index: 1; left: 1020px; top: 11px;  width: 80px; height: 70px; position: absolute;" BackColor="White" BorderColor="Blue"/>
+        <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:205px; margin-top:10px; z-index: 1; left: 1020px; top: 11px;  width: 110px; height: 60px; position: absolute;" BackColor="White" BorderColor="Blue"/>
         </asp:Panel>
         
             <div style="width: 1323px; height: 281px; overflow:auto; z-index: 1; left: 24px; top: 175px; position: absolute;">
@@ -68,9 +68,9 @@
         </asp:GridView>
             </div>
         
-        <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 22px; top: 469px; position: absolute; height: 144px; width: 1331px; text-align: left;" ScrollBars ="Auto">
+        <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 22px; top: 469px; position: absolute; height: 226px; width: 1331px; text-align: left;" ScrollBars ="Auto">
             <asp:Label ID="Label4" runat="server" Text="Label" ForeColor="White" Font-Bold="True"></asp:Label>
-            <asp:GridView ID="GridView2" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Height="17px" Width="1309px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small">
+            <asp:GridView ID="GridView2" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Height="190px" Width="1309px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -93,9 +93,9 @@
             </asp:GridView>
         </asp:Panel>
         
-        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: -574px; top: 636px; position: absolute; height: 116px; width: 1330px; margin-left: 596px" ScrollBars ="Auto">
+        <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: -574px; top: 705px; position: absolute; height: 195px; width: 1330px; margin-left: 596px" ScrollBars ="Auto">
             <asp:Label ID="Label5" runat="server" Text="Label" ForeColor="White" Font-Bold="True"></asp:Label>
-            <asp:GridView ID="GridView3" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Height="16px" Width="1307px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small">
+            <asp:GridView ID="GridView3" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Height="177px" Width="1307px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -117,9 +117,9 @@
             </asp:GridView>
         </asp:Panel>
         
-        <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 21px; top: 777px; position: absolute; height: 149px; width: 1329px" ScrollBars ="Auto">
+        <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 24px; top: 920px; position: absolute; height: 205px; width: 1326px" ScrollBars ="Auto">
             <asp:Label ID="Label6" runat="server" Text="Label" ForeColor="White" Font-Bold="True"></asp:Label>
-            <asp:GridView ID="GridView4" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Width="1304px" Height="109px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="verdana" Font-Size="Small">
+            <asp:GridView ID="GridView4" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Width="1304px" Height="177px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -143,9 +143,9 @@
             <br />
         </asp:Panel>
         
-        <asp:Panel ID="Panel4" runat="server" style="z-index: 1; left: -652px; top: 951px; position: absolute; height: 190px; width: 1330px; margin-left: 672px" ScrollBars ="Auto">
+        <asp:Panel ID="Panel4" runat="server" style="z-index: 1; left: -644px; top: 1134px; position: absolute; height: 196px; width: 1317px; margin-left: 672px" ScrollBars ="Auto">
             <asp:Label ID="Label7" runat="server" ForeColor="White" Text="Label" Font-Bold="True"></asp:Label>
-            <asp:GridView ID="GridView5" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Width="1299px" ForeColor="#333333" GridLines="None" Height="126px" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small">
+            <asp:GridView ID="GridView5" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Width="1299px" ForeColor="#333333" GridLines="None" Height="172px" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -168,9 +168,9 @@
             <br />
         </asp:Panel>
         
-        <asp:Panel ID="Panel5" runat="server" style="z-index: 1; left: -661px; top: 1148px; position: absolute; height: 182px; width: 1330px; margin-left: 679px">
+        <asp:Panel ID="Panel5" runat="server" style="z-index: 1; left: -656px; top: 1355px; position: absolute; height: 233px; width: 1319px; margin-left: 679px">
             <asp:Label ID="Label8" runat="server" Font-Bold="True" ForeColor="White" Text="Label"></asp:Label>
-            <asp:GridView ID="GridView6" runat="server" CellPadding="4" Font-Names="verdana" Font-Size="Small" ForeColor="#333333" GridLines="None" Width="1303px" EmptyDataText="No hay Datos" ShowHeaderWhenEmpty="True">
+            <asp:GridView ID="GridView6" runat="server" CellPadding="5" Font-Names="verdana" Font-Size="Small" ForeColor="#333333" GridLines="None" Width="1303px" EmptyDataText="No hay Datos" ShowHeaderWhenEmpty="True" CellSpacing="1" Height="203px">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -196,9 +196,9 @@
         <asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 781px; top: 66px; position: absolute; height: 31px; width: 151px;" BackColor="#33CC33" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
 
         
-        <asp:Panel ID="Panel6" runat="server" style="z-index: 1; left: 16px; top: 1367px; position: absolute; height: 226px; width: 1325px" ScrollBars ="Auto">
+        <asp:Panel ID="Panel6" runat="server" style="z-index: 1; left: 26px; top: 1623px; position: absolute; height: 226px; width: 1314px" ScrollBars ="Auto">
         
-            <asp:GridView ID="GridView7" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="1296px" EmptyDataText="No hay Datos" ShowHeaderWhenEmpty="True">
+            <asp:GridView ID="GridView7" runat="server" CellPadding="5" ForeColor="#333333" GridLines="None" Width="1296px" EmptyDataText="No hay Datos" ShowHeaderWhenEmpty="True" CellSpacing="1" Height="211px">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -231,7 +231,7 @@
         
 
         
-        <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" style="z-index: 1; left: 25px; top: 1337px; position: absolute; margin-top: 0px" Text="Label"></asp:Label>
+        <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" style="z-index: 1; left: 31px; top: 1600px; position: absolute; margin-top: 0px" Text="Label"></asp:Label>
 
         
         
