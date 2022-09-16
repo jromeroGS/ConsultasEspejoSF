@@ -19,6 +19,7 @@ using System.Web.UI.HtmlControls;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
+
 namespace WebApp
 {
     public partial class WebForm1 : System.Web.UI.Page
@@ -52,7 +53,7 @@ namespace WebApp
             DDLObjeto.DataValueField = "Id_Objeto";
             DDLObjeto.DataBind();
             DDLObjeto.Items.Insert(0, new ListItem("Seleccione el Objeto", "0"));
-            
+
             //GridView1.Columns.Clear();
             GridView1 = null;
             GridView2 = null;
@@ -60,6 +61,7 @@ namespace WebApp
             GridView4 = null;
             GridView5 = null;
             GridView6 = null;
+
 
             conexion.Close();
 
@@ -90,12 +92,20 @@ namespace WebApp
                 SqlConnection conexion = conect.Conection();
                 conexion.Open();
 
+
+
+
+
+
+
+
                 GridView2.Visible = false;
                 GridView3.Visible = false;
                 GridView4.Visible = false;
                 GridView5.Visible = false;
                 GridView6.Visible = false;
                 GridView7.Visible = false;
+                GVSinCloudDocuments.Visible = false;
 
                 Label4.Visible = false;
                 Label5.Visible = false;
@@ -120,23 +130,29 @@ namespace WebApp
                 GridView1.DataBind();
                 conexion.Close();
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 string error = ex.Message;
-                MessageBox.Show("Revise el valor ingresado y el filtro"+ error, "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Revise el valor ingresado y el filtro" + error, "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
                 string error = ex.Message;
                 MessageBox.Show(error, "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+
+
+
+
+
 
         protected void Exportar_Excel(object sender, EventArgs e)
         {
@@ -191,6 +207,7 @@ namespace WebApp
             GridView4 = null;
             GridView5 = null;
             GridView6 = null;
+            GVSinCloudDocuments = null;
             Label4.Text = "";
             Label5.Text = "";
             Label6.Text = "";
@@ -231,11 +248,11 @@ namespace WebApp
             //comando.CommandText = "spConsCuentaOp";
             comando.Parameters.Add("@ValObjeto", SqlDbType.VarChar).Value = idSeleccion;*/
 
-            
+
             switch (Lista1)
             {
                 case "Oportunidad":
-                    queryDet2 = "SELECT tipoDeDocumento__c TipoDocumento,Name Nombre,DateTimeCreated__c Fecha_Creación, CreatedById Creado_Por, Download__c Cloud, sequence__c Secuencia, PreviewDownload__c AS URL, Ver__c Ver FROM DragDropToCloudCloudDocuments__c WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
+                    queryDet2 = "SELECT tipoDeDocumento__c TipoDocumento,Name Nombre,DateTimeCreated__c Fecha_Creación, CreatedById Creado_Por, Download__c Descargar, sequence__c Secuencia FROM DragDropToCloudCloudDocuments__c WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
                     Label4.Text = "CLOUD DOCUMENTS";
                     queryDet3 = "SELECT Cons.Name Consolidado, Cons.Contract_Code__c Número_de_Contrato, Cons.SalesDocument__c Contrato_Factura, Cons.TotalPaymentValue__c  ValorBruto, Cons.DiscountAmount__c Descuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c Impuesto, Cons.Date_First_Installment__c FechaAFacturar, Medio.Name Medio_Pago, PartyNumber__c ClienteUnico, BusinessName__c Razón_Social, Email_Facturacion__c Email, IdentityTxt__c Identificación, Direccion_facturacion__c Dirección_Facturación, Ciu.Name Ciudad, Pais.Name País FROM ConsolidatedSales__c Cons INNER JOIN Consolidated_by_Opportunity__c ConsXO ON Cons.Id = ConsXO.Consolidated_Sales__c LEFT JOIN Collection_Agent__c Medio ON Cons.Collection_Agent__c = Medio.Id LEFT JOIN Location__c Ciu ON Ciu.Id= Cons.City_Operator_Phone__c LEFT JOIN Location__c Pais on Pais.Id=Cons.Country__c WHERE ConsXO.Opportunity__c = '" + idSeleccion + "' ORDER BY Cons.Id";
                     Label5.Text = "CONSOLIDADO DE VENTAS";
@@ -301,9 +318,20 @@ namespace WebApp
                 SqlDataAdapter data = new SqlDataAdapter(comando);
                 DataTable tabla = new DataTable();
                 data.Fill(tabla);
-                GridView2.DataSource = tabla;
-                GridView2.Visible = true;
-                GridView2.DataBind();
+                if (Label4.Text == "CLOUD DOCUMENTS")
+                {
+                    GridView2.DataSource = tabla;
+                    GridView2.Visible = true;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    GVSinCloudDocuments.DataSource = tabla;
+                    GVSinCloudDocuments.Visible = true;
+                    GVSinCloudDocuments.DataBind();
+                }
+
+
             }
 
             if (queryDet3 != "")
@@ -394,13 +422,13 @@ namespace WebApp
                 }
             }*/
 
-           /* GridViewRow row = GridView1.SelectedRow;
+            /* GridViewRow row = GridView1.SelectedRow;
 
-            //
-            // Obtengo el id de la entidad que se esta editando
-            // en este caso de la entidad Person
-            //
-            int idselec = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Value);*/
+             //
+             // Obtengo el id de la entidad que se esta editando
+             // en este caso de la entidad Person
+             //
+             int idselec = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Value);*/
 
 
         }
@@ -421,16 +449,15 @@ namespace WebApp
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            
-               /* if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    HyperLink link = new HyperLink();
-                    link.Text = "NUEVOLINK";
-                    link.NavigateUrl = "Navegar a: " + e.Row.DataItem;
-                    e.Row.Cells[ColumnIndex].Controls.Add(link);
-            }*/
-            
+
+            /* if (e.Row.RowType == DataControlRowType.DataRow)
+             {
+                 HyperLink link = new HyperLink();
+                 link.Text = "NUEVOLINK";
+                 link.NavigateUrl = "Navegar a: " + e.Row.DataItem;
+                 e.Row.Cells[ColumnIndex].Controls.Add(link);
+         }*/
+
         }
     }
 }
-

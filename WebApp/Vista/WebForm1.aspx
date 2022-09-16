@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApp.WebForm1" %>
+﻿			  
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApp.WebForm1" %>
 
 <!DOCTYPE html>
 
@@ -23,8 +25,6 @@
         &nbsp;<asp:DropDownList ID="DDLObjeto"  OnSelectedIndexChanged="DDLObjeto_SelectedIndexChanged" AutoPostBack="true" runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 217px; top: 25px; position: absolute" Font-Names="Verdana" Font-Size="Small"></asp:DropDownList>
         
         <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 24px; top: 33px; position: absolute; width: 180px; bottom: 282px;" Text="Seleccione el Objeto" Font-Bold="True" Font-Italic="True" Font-Size="Small" Font-Strikeout="False" ForeColor="White" Font-Names="Verdana"></asp:Label>
-       
-        
         <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 530px; top: 30px; position: absolute; width: 58px; height: 21px;" Text="Buscar" Font-Bold="True" Font-Italic="True" ForeColor="White" Font-Names="Verdana" Font-Size="Small"></asp:Label>
   
         <asp:DropDownList ID="DDLFiltro"  runat="server" class="btn btn-secondary dropdown-toggle" style="z-index: 1; left: 217px; top: 70px; position: absolute" Font-Names="Verdana" Font-Size="Small"></asp:DropDownList>
@@ -46,25 +46,24 @@
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BorderStyle="Solid" Wrap="False" BackColor="#F7F6F3" ForeColor="#333333" />
             
-                    <SelectedRowStyle BackColor="#6699FF" Font-Italic="True" ForeColor="White" />
+            <SelectedRowStyle BackColor="#6699FF" Font-Italic="True" ForeColor="White" />
             
             <SortedAscendingCellStyle BackColor="#E9E7E2" />
             <SortedAscendingHeaderStyle BackColor="#506C8C" />
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
 
-                    <Columns>
-                    <asp:TemplateField HeaderText="Detalle">
-                    <itemTemplate><asp:LinkButton ID="LnkDet" Text="Ver Listas" forecolor="#3333FF" runat="server"   CommandArgument='<%# Eval("ID") %>' OnClick="LnkDet_Click"/></itemTemplate></asp:TemplateField>
-<asp:TemplateField HeaderText="Nro"><ItemTemplate>
-                    <%# Container.DataItemIndex + 1%>                   
-</ItemTemplate>
-    <ItemStyle ForeColor="#6666FF" HorizontalAlign="Center" />
-</asp:TemplateField>
+            <Columns>
+            <asp:TemplateField HeaderText="Detalle">
+            <itemTemplate><asp:LinkButton ID="LnkDet" Text="Ver Listas" forecolor="#3333FF" runat="server"   CommandArgument='<%# Eval("ID") %>' OnClick="LnkDet_Click"/></itemTemplate></asp:TemplateField>
+            <asp:TemplateField HeaderText="Nro"><ItemTemplate>
+            <%# Container.DataItemIndex + 1%>                   
+					
+            </ItemTemplate>
+                <ItemStyle ForeColor="#6666FF" HorizontalAlign="Center" />
+            </asp:TemplateField>
                     
-                    </Columns>
-                   
-                
+                    </Columns>				
         </asp:GridView>
             </div>
         
@@ -88,8 +87,33 @@
                             <%# Container.DataItemIndex + 1%>
                         </ItemTemplate>
                     </asp:TemplateField>
+					<asp:HyperLinkField 
+						DataTextField="Descargar" 
+						DataNavigateUrlFields="Descargar"  
+						Target="_blank" 
+						HeaderText="UrlDocument"/>													  
                 </Columns>
  
+            </asp:GridView>
+			<asp:GridView ID="GVSinCloudDocuments" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Height="17px" Width="1208px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small">
+                <EditRowStyle BackColor="#999999" />
+                <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle ForeColor="#333333" BackColor="#F7F6F3" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                <Columns>
+                    <asp:TemplateField HeaderText="Nro">
+                        <ItemTemplate>
+                            <%# Container.DataItemIndex + 1%>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
             </asp:GridView>
         </asp:Panel>
         
@@ -156,6 +180,7 @@
                 <SortedAscendingHeaderStyle BackColor="#506C8C" />
                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:TemplateField HeaderText="Nro">
@@ -182,6 +207,7 @@
                 <SortedAscendingHeaderStyle BackColor="#506C8C" />
                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+																			 
                  <Columns>
                 <asp:TemplateField HeaderText="Nro">
                         <ItemTemplate>
@@ -191,13 +217,9 @@
                      </Columns>
             </asp:GridView>
     </asp:Panel>
-        <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 24px; top: 77px; position: absolute; height: 16px; width: 184px;" Text="Criterio de Búsqueda" Font-Italic="True" ForeColor="White" Font-Bold="True" Font-Names="Verdana" Font-Size="Small"></asp:Label>
-        
-        <asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 781px; top: 66px; position: absolute; height: 31px; width: 151px;" BackColor="#33CC33" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />
-
-        
+        <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 24px; top: 77px; position: absolute; height: 16px; width: 184px;" Text="Criterio de Búsqueda" Font-Italic="True" ForeColor="White" Font-Bold="True" Font-Names="Verdana" Font-Size="Small"></asp:Label>        
+        <asp:Button ID="Button5" runat="server" class="btn btn-secondary" OnClick="Exportar_Excel" Text="Exportar excel" style="z-index: 1; left: 781px; top: 66px; position: absolute; height: 31px; width: 151px;" BackColor="#33CC33" Font-Bold="True" Font-Italic="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" />   
         <asp:Panel ID="Panel6" runat="server" style="z-index: 1; left: 26px; top: 1623px; position: absolute; height: 226px; width: 1314px" ScrollBars ="Auto">
-        
             <asp:GridView ID="GridView7" runat="server" CellPadding="5" ForeColor="#333333" GridLines="None" Width="1296px" EmptyDataText="No hay Datos" ShowHeaderWhenEmpty="True" CellSpacing="1" Height="211px">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <EditRowStyle BackColor="#999999" />
@@ -220,33 +242,7 @@
             </asp:GridView>
             <br />
         </asp:Panel>
-
-        
-        
-
-        
-        
-
-        
-        
-
-        
         <asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Names="Verdana" Font-Size="Small" ForeColor="White" style="z-index: 1; left: 31px; top: 1600px; position: absolute; margin-top: 0px" Text="Label"></asp:Label>
-
-        
-        
-
-        
-        
-
-        
-        
-
-        
     </form>
 </body>
-
-
-
-
 </html>
