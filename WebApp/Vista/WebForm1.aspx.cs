@@ -110,19 +110,6 @@ namespace WebApp
                 String Texto1 = TextBox1.Text;
                 String query = filtros.Filtros(Lista1, Lista2, Texto1);
 
-
-                /*string mensaje = "";
-                if (Lista2 == "Código")
-                {
-                    if (Regex.IsMatch(Texto1, @"^[0-9]+$"))
-                    {
-                        mensaje = "Correcto";
-                    }
-                        
-                    else
-                        MessageBox.Show("Debe digitar un Número ", "ERROR DE ESCRITURA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }*/
-
                 SqlCommand comando = new SqlCommand(query, conexion);
                 SqlDataAdapter data = new SqlDataAdapter(comando);
 
