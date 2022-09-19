@@ -93,12 +93,6 @@ namespace WebApp
                 conexion.Open();
 
 
-
-
-
-
-
-
                 GridView2.Visible = false;
                 GridView3.Visible = false;
                 GridView4.Visible = false;
@@ -254,9 +248,9 @@ namespace WebApp
                 case "Oportunidad":
                     queryDet2 = "SELECT tipoDeDocumento__c TipoDocumento,Name Nombre,DateTimeCreated__c Fecha_Creación, CreatedById Creado_Por, Download__c Descargar, sequence__c Secuencia FROM DragDropToCloudCloudDocuments__c WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
                     Label4.Text = "CLOUD DOCUMENTS";
-                    queryDet3 = "SELECT Cons.Name Consolidado, Cons.Contract_Code__c Número_de_Contrato, Cons.SalesDocument__c Contrato_Factura, Cons.TotalPaymentValue__c  ValorBruto, Cons.DiscountAmount__c Descuento, Cons.AmountWithTaxes__c ValorNeto, Cons.Tax1Value__c Impuesto, Cons.Date_First_Installment__c FechaAFacturar, Medio.Name Medio_Pago, PartyNumber__c ClienteUnico, BusinessName__c Razón_Social, Email_Facturacion__c Email, IdentityTxt__c Identificación, Direccion_facturacion__c Dirección_Facturación, Ciu.Name Ciudad, Pais.Name País FROM ConsolidatedSales__c Cons INNER JOIN Consolidated_by_Opportunity__c ConsXO ON Cons.Id = ConsXO.Consolidated_Sales__c LEFT JOIN Collection_Agent__c Medio ON Cons.Collection_Agent__c = Medio.Id LEFT JOIN Location__c Ciu ON Ciu.Id= Cons.City_Operator_Phone__c LEFT JOIN Location__c Pais on Pais.Id=Cons.Country__c WHERE ConsXO.Opportunity__c = '" + idSeleccion + "' ORDER BY Cons.Id";
+                    queryDet3 = "SELECT Cons.Name Consolidado, Cons.Contract_Code__c Número_de_Contrato, Cons.SalesDocument__c Contrato_Factura, FORMAT(Cons.TotalPaymentValue__c, '###,###,###.00')   ValorBruto,FORMAT(Cons.DiscountAmount__c, '###,###,###.00')  Descuento, FORMAT(Cons.AmountWithTaxes__c, '###,###,###.00')  ValorNeto, FORMAT(Cons.Tax1Value__c, '###,###,###.00')  Impuesto, Cons.Date_First_Installment__c FechaAFacturar, Medio.Name Medio_Pago, PartyNumber__c ClienteUnico, BusinessName__c Razón_Social, Email_Facturacion__c Email, IdentityTxt__c Identificación, Direccion_facturacion__c Dirección_Facturación, Ciu.Name Ciudad, Pais.Name País FROM ConsolidatedSales__c Cons INNER JOIN Consolidated_by_Opportunity__c ConsXO ON Cons.Id = ConsXO.Consolidated_Sales__c LEFT JOIN Collection_Agent__c Medio ON Cons.Collection_Agent__c = Medio.Id LEFT JOIN Location__c Ciu ON Ciu.Id= Cons.City_Operator_Phone__c LEFT JOIN Location__c Pais on Pais.Id=Cons.Country__c WHERE ConsXO.Opportunity__c = '" + idSeleccion + "' ORDER BY Cons.Id";
                     Label5.Text = "CONSOLIDADO DE VENTAS";
-                    queryDet4 = "SELECT Act.Name Activo, Act.Status Estado, Pro.Name Nombre_Producto, IdPurchase2__c Aviso, Estado_suscripcion__c EstadoSuscripción, Monthly_value__c ValorMensual, Date_Nextbilling__c FechaPróxFact, InstallDate FechaInicialUso,  UsageEndDate FechaFinalUso, PurchaseDate FechaDeCompra, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación, AnualPayment__c PagoAnual, FigurationNameTxtAndIdPurchase2__c NombreFiguración FROM Asset Act INNER JOIN Product2 Pro ON Act.Product2Id = Pro.Id WHERE Act.Oportunidad_relacionada__c = '" + idSeleccion + "' ORDER BY Act.Id";
+                    queryDet4 = "SELECT Act.Name Activo, Act.Status Estado, Pro.Name Nombre_Producto, IdPurchase2__c Aviso, Estado_suscripcion__c EstadoSuscripción, Monthly_value__c ValorMensual, Date_Nextbilling__c FechaPróxFact, InstallDate FechaInicialUso,  UsageEndDate FechaFinalUso, PurchaseDate FechaDeCompra, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación,FORMAT(AnualPayment__c, '###,###,###.00')  PagoAnual, FigurationNameTxtAndIdPurchase2__c NombreFiguración FROM Asset Act INNER JOIN Product2 Pro ON Act.Product2Id = Pro.Id WHERE Act.Oportunidad_relacionada__c = '" + idSeleccion + "' ORDER BY Act.Id";
                     Label6.Text = "ACTIVOS";
                     /*queryDet3 = "SELECT  FROM ConsolidateSales__C WHERE OportunityID__c = '" + idSeleccion + "' ORDER BY sequence__c";
                     Label5.Text = "DATOS DE FACTURACION";*/
@@ -274,11 +268,11 @@ namespace WebApp
                 case "Cuenta":
                     queryDet2 = "SELECT CaseNumber NúmeroCaso, SolutionGD__c Solución, Solution_Detail__c Detalle, Tipi.Name Detalle_Tipo_Solicitud,Status Estado, Caso.CreatedDate FechaApertura, Caso.ClosedDate FechaCierre, Usuario.Name Propietario FROM [Case] Caso INNER JOIN ACCOUNT cuenta ON Caso.AccountId=Cuenta.id INNER JOIN [User] Usuario ON Caso.OwnerId = Usuario.id LEFT JOIN Tipificacion__c Tipi ON Caso.Detalle_tipo_de_solicitud__c = Tipi.ID WHERE Caso.AccountId = '" + idSeleccion + "' ORDER BY Caso.CaseNumber";
                     Label4.Text = "CASOS";
-                    queryDet3 = "SELECT Opor.NAME NombreOportunidad, Ter.NAME NombreTercero, StageName Etapa, FirstDateReportSales__c Fecha_de_Cierre, Contract_code__c Número_de_Contrato, LiveOpportu__c OportViva, Amount Valor_Neto, Type_of_contract__c Tipo_de_Contrato, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LegalvalidationDate__c Fecha_ValidaciónJur FROM OPPORTUNITY as Opor INNER JOIN Territorio__c as Ter on opor.Territory__c = Ter.Id WHERE Opor.AccountId = '" + idSeleccion + "' ORDER BY Opor.Id";
+                    queryDet3 = "SELECT Opor.NAME NombreOportunidad, Ter.NAME NombreTercero, StageName Etapa, FirstDateReportSales__c Fecha_de_Cierre, Contract_code__c Número_de_Contrato, LiveOpportu__c OportViva,FORMAT(Amount , '###,###,###.00') Valor_Neto, Type_of_contract__c Tipo_de_Contrato, Fecha_cerrada_Ganada__c Fecha_CerradaGanada, LegalvalidationDate__c Fecha_ValidaciónJur FROM OPPORTUNITY as Opor INNER JOIN Territorio__c as Ter on opor.Territory__c = Ter.Id WHERE Opor.AccountId = '" + idSeleccion + "' ORDER BY Opor.Id";
                     Label5.Text = "OPORTUNIDADES";
-                    queryDet4 = "SELECT Act.Name NombreActivo, Act.Status Estado,Act.Price Precio,Act.Renovado__c Renovado, FigurationNameTxtAndIdPurchase2__c RazónFigur_IdAvis_Pdto_PartPdto_Ciud_Sec, Opor.Contract_code__c Contrato, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación, Act.AnualPayment__c PagoAnual FROM ASSET as Act INNER JOIN Opportunity Opor ON Act.Oportunidad_relacionada__c = Opor.Id WHERE Act.AccountId = '" + idSeleccion + "' ORDER BY Act.Id";
+                    queryDet4 = "SELECT Act.Name NombreActivo, Act.Status Estado,FORMAT(Act.Price, '###,###,###.00') Precio,Act.Renovado__c Renovado, FigurationNameTxtAndIdPurchase2__c RazónFigur_IdAvis_Pdto_PartPdto_Ciud_Sec, Opor.Contract_code__c Contrato, Activate_date__c FechaActivación, Desactivation_Date__c FechaDesactivación, Act.AnualPayment__c PagoAnual FROM ASSET as Act INNER JOIN Opportunity Opor ON Act.Oportunidad_relacionada__c = Opor.Id WHERE Act.AccountId = '" + idSeleccion + "' ORDER BY Act.Id";
                     Label6.Text = "ACTIVOS";
-                    queryDet5 = "SELECT Name Consolidado, Contract_Code__c Número_de_Contrato, SalesDocument__c Contrato_Factura, TotalPaymentValue__c ValorBruto, DiscountAmount__c Descuento, AmountWithTaxes__c ValorNeto, Tax1Value__c Impuesto, Date_First_Installment__c FechaAFacturar FROM ConsolidatedSales__c as Cons WHERE Cons.account__c = '" + idSeleccion + "' ORDER BY Cons.name";
+                    queryDet5 = "SELECT Name Consolidado, Contract_Code__c Número_de_Contrato, SalesDocument__c Contrato_Factura,FORMAT(TotalPaymentValue__c, '###,###,###.00')  ValorBruto,FORMAT(DiscountAmount__c, '###,###,###.00')  Descuento, FORMAT(AmountWithTaxes__c, '###,###,###.00') ValorNeto, FORMAT(Tax1Value__c, '###,###,###.00') Impuesto, Date_First_Installment__c FechaAFacturar FROM ConsolidatedSales__c as Cons WHERE Cons.account__c = '" + idSeleccion + "' ORDER BY Cons.name";
                     Label7.Text = "CONSOLIDADOS DE VENTAS";
 
                     queryDet6 = "SELECT Name Nombre_RF, Status__c Estado, Flow__c Flujo, Satisfaction_Level__c Nivel_de_Satisfacción, CallCounter__c Cant_Llamadas,  CloseDate__c Fecha_Cierre FROM Loyalty_Registry__c as Reg WHERE Reg.Account__c = '" + idSeleccion + "' ORDER BY Reg.Id";
@@ -299,12 +293,12 @@ namespace WebApp
                     Label7.Text = "ACTIVIDADES";
                     break;
                 case "Consolidado de Ventas":
-                    queryDet2 = "SELECT Name CuotaConsolidado,PaymentValue__c ValorBruto, DiscountAmount__c Descuento, AmountWithTaxes__c ValorNeto,Tax1Value__c Impuesto, TotalBilling__c ValorTotal, PositionSAP__c PosiciónSap, PaymentNumber__c Posicion, BillingDate__c Fecha_de_Facturación, Billing_Date__c Fecha_de_Cuota, FinancialCode__c CódigoFinanciero, Number_of_Initial_Contract__c ContratoInicial, SAP_Synchronization__c SincronizaciónSAP, ReferenceName__c Referencia, Business_line__c Línea_Negocio FROM PaymentByConsolidatedSales__c WHERE ConsolidatedSalesId__c = '" + idSeleccion + "' ORDER BY Name";
+                    queryDet2 = "SELECT Name CuotaConsolidado,FORMAT(PaymentValue__c, '###,###,###.00') ValorBruto, FORMAT(DiscountAmount__c, '###,###,###.00') Descuento, FORMAT(AmountWithTaxes__c, '###,###,###.00') ValorNeto,FORMAT(Tax1Value__c, '###,###,###.00') Impuesto, FORMAT(TotalBilling__c, '###,###,###.00') ValorTotal, PositionSAP__c PosiciónSap, PaymentNumber__c Posicion, BillingDate__c Fecha_de_Facturación, Billing_Date__c Fecha_de_Cuota, FinancialCode__c CódigoFinanciero, Number_of_Initial_Contract__c ContratoInicial, SAP_Synchronization__c SincronizaciónSAP, ReferenceName__c Referencia, Business_line__c Línea_Negocio FROM PaymentByConsolidatedSales__c WHERE ConsolidatedSalesId__c = '" + idSeleccion + "' ORDER BY Name";
                     Label4.Text = "CUOTAS DEL CONSOLIDADO";
 
                     break;
                 case "Datos de Facturación":
-                    queryDet2 = "SELECT Name CuotaDato, ReferenceName__c Referencia,PaymentNumber__c ConsCuota,PaymentValue__c ValorBruto, DiscountAmount__c Descuento,AmountWithTaxes__c ValorNeto, Tax1Value__c Impuesto, TotalBilling__c TotalFacturar, BillingDate__c FechaFactura, Billing_Date__c FechaCuota, FinancialCode__c CódigoFinanciero FROM BillingDataByReferenceByPayment__c WHERE BillingDataId__c = '" + idSeleccion + "' ORDER BY Name";
+                    queryDet2 = "SELECT Name CuotaDato, ReferenceName__c Referencia,PaymentNumber__c ConsCuota,FORMAT(PaymentValue__c, '###,###,###.00') ValorBruto, FORMAT(DiscountAmount__c, '###,###,###.00') Descuento,FORMAT(AmountWithTaxes__c, '###,###,###.00') ValorNeto, FORMAT(Tax1Value__c, '###,###,###.00') Impuesto, FORMAT(TotalBilling__c, '###,###,###.00') TotalFacturar, BillingDate__c FechaFactura, Billing_Date__c FechaCuota, FinancialCode__c CódigoFinanciero FROM BillingDataByReferenceByPayment__c WHERE BillingDataId__c = '" + idSeleccion + "' ORDER BY Name";
                     Label4.Text = "CUOTAS DEL DATO DE FACTURACION";
                     break;
 

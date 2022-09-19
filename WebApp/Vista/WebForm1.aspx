@@ -34,7 +34,7 @@
         <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 24px; position: absolute; left: 606px; width: 414px;" BorderStyle="Solid"></asp:TextBox>
         <br />
     <asp:Panel ID="Panel7" runat="server">
-        <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:205px; margin-top:10px; z-index: 1; left: 1020px; top: 11px;  width: 110px; height: 60px; position: absolute;" BackColor="White" BorderColor="Blue"/>
+        <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:205px; margin-top:10px; z-index: 1; left: 900px; top: 11px;  width: 150px; height: 80px; position: absolute;" BackColor="White" BorderColor="Blue"/>
         </asp:Panel>
         
             <div style="width: 1323px; height: 281px; overflow:auto; z-index: 1; left: 24px; top: 175px; position: absolute;">
