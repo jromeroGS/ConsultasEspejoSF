@@ -34,8 +34,8 @@
         <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; top: 24px; position: absolute; left: 606px; width: 414px;" BorderStyle="Solid"></asp:TextBox>
         <br />
     <asp:Panel ID="Panel7" runat="server">
-        <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:205px; margin-top:10px; z-index: 1; left: 900px; top: 11px;  width: 150px; height: 80px; position: absolute;" BackColor="White" BorderColor="Blue"/>
-        </asp:Panel>
+        <asp:Image ID="Image1" runat="server" src="./logo.png" style="margin-left:205px; margin-top:10px; z-index: 1; left: 950px; top: 11px;  width: 110px; height: 60px; position: absolute;" BackColor="#6699FF" BorderColor="Blue"/>    
+    </asp:Panel>
         
             <div style="width: 1323px; height: 281px; overflow:auto; z-index: 1; left: 24px; top: 175px; position: absolute;">
                 <asp:GridView ID="GridView1" ShowHeaderWhenEmpty="True" runat="server" CaptionAlign ="Bottom" ForeColor="#333333" style="z-index: 2; left: 2px; top: 0px; position: relative; height: 260px; width: 1432px; margin-top: 0px" CellPadding="6" GridLines="None" HorizontalAlign="Justify" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CellSpacing="1">
@@ -68,7 +68,7 @@
             </div>
         
         <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 22px; top: 469px; position: absolute; height: 226px; width: 1331px; text-align: left;" ScrollBars ="Auto">
-            <asp:Label ID="Label4" runat="server" Text="Label" ForeColor="White" Font-Bold="True"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="Label" ForeColor="White" Font-Bold="True" Font-Names="Verdana" Font-Size="Small"></asp:Label>
             <asp:GridView ID="GridView2" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Height="190px" Width="1309px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
@@ -95,7 +95,7 @@
                 </Columns>
  
             </asp:GridView>
-			<asp:GridView ID="GVSinCloudDocuments" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Height="17px" Width="1208px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small">
+			<asp:GridView ID="GVSinCloudDocuments" runat="server" ShowHeaderWhenEmpty="True" CellPadding="4" Height="17px" Width="1309px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -118,7 +118,7 @@
         </asp:Panel>
         
         <asp:Panel ID="Panel2" runat="server" style="z-index: 1; left: -574px; top: 705px; position: absolute; height: 195px; width: 1330px; margin-left: 596px" ScrollBars ="Auto">
-            <asp:Label ID="Label5" runat="server" Text="Label" ForeColor="White" Font-Bold="True"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="Label" ForeColor="White" Font-Bold="True" Font-Names="Verdana" Font-Size="Small"></asp:Label>
             <asp:GridView ID="GridView3" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Height="177px" Width="1307px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
@@ -142,7 +142,7 @@
         </asp:Panel>
         
         <asp:Panel ID="Panel3" runat="server" style="z-index: 1; left: 24px; top: 920px; position: absolute; height: 205px; width: 1326px" ScrollBars ="Auto">
-            <asp:Label ID="Label6" runat="server" Text="Label" ForeColor="White" Font-Bold="True"></asp:Label>
+            <asp:Label ID="Label6" runat="server" Text="Label" ForeColor="White" Font-Bold="True" Font-Names="Verdana" Font-Size="Small"></asp:Label>
             <asp:GridView ID="GridView4" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Width="1304px" Height="177px" ForeColor="#333333" GridLines="None" EmptyDataText="No hay Datos" Font-Names="verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
@@ -168,7 +168,7 @@
         </asp:Panel>
         
         <asp:Panel ID="Panel4" runat="server" style="z-index: 1; left: -644px; top: 1134px; position: absolute; height: 196px; width: 1317px; margin-left: 672px" ScrollBars ="Auto">
-            <asp:Label ID="Label7" runat="server" ForeColor="White" Text="Label" Font-Bold="True"></asp:Label>
+            <asp:Label ID="Label7" runat="server" ForeColor="White" Text="Label" Font-Bold="True" Font-Names="Verdana" Font-Size="Small"></asp:Label>
             <asp:GridView ID="GridView5" runat="server" ShowHeaderWhenEmpty="True" CellPadding="5" Width="1299px" ForeColor="#333333" GridLines="None" Height="172px" EmptyDataText="No hay Datos" Font-Names="Verdana" Font-Size="Small" CellSpacing="1">
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />
@@ -194,7 +194,7 @@
         </asp:Panel>
         
         <asp:Panel ID="Panel5" runat="server" style="z-index: 1; left: -656px; top: 1355px; position: absolute; height: 233px; width: 1319px; margin-left: 679px">
-            <asp:Label ID="Label8" runat="server" Font-Bold="True" ForeColor="White" Text="Label"></asp:Label>
+            <asp:Label ID="Label8" runat="server" Font-Bold="True" ForeColor="White" Text="Label" Font-Names="Verdana" Font-Size="Small"></asp:Label>
             <asp:GridView ID="GridView6" runat="server" CellPadding="5" Font-Names="verdana" Font-Size="Small" ForeColor="#333333" GridLines="None" Width="1303px" EmptyDataText="No hay Datos" ShowHeaderWhenEmpty="True" CellSpacing="1" Height="203px">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <EditRowStyle BackColor="#999999" />
