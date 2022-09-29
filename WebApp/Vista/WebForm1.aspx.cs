@@ -120,10 +120,20 @@ namespace WebApp
                 comando.Parameters.Add("@CampoFiltro", SqlDbType.VarChar).Value = Lista2;
                 comando.Parameters.Add("@ValorFiltro", SqlDbType.VarChar).Value = Texto1;
 
-                GridView1.DataSource = comando.ExecuteReader();
-                GridView1.Visible = true;
-                GridView1.DataBind();
-                conexion.Close();
+                if (TextBox1.Text.Length != 0)
+                {
+                    GridView1.DataSource = comando.ExecuteReader();
+                    GridView1.Visible = true;
+                    GridView1.DataBind();
+                    conexion.Close();
+                    GridView1.UseAccessibleHeader = true;
+                    GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                }
+                else
+                {
+                    MessageBox.Show("Datos Incompletos", "Mensaje de Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
             }
             catch (FormatException ex)
@@ -143,11 +153,6 @@ namespace WebApp
         {
 
         }
-
-
-
-
-
 
 
         protected void Exportar_Excel(object sender, EventArgs e)
@@ -181,7 +186,7 @@ namespace WebApp
                     var hoja = libro.Worksheets.Add(tabla);
                     hoja.ColumnsUsed().AdjustToContents();
                     Response.Clear();
-                    Response.Buffer = true;
+                    Response.Buffer = false;
                     Response.Charset = "";
                     Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                     Response.AddHeader("content-disposition", "attachment;filename=Reporte.xlsx");
@@ -292,12 +297,20 @@ namespace WebApp
                     GridView2.DataSource = comando.ExecuteReader();
                     GridView2.Visible = true;
                     GridView2.DataBind();
+                    GridView2.UseAccessibleHeader = true;
+                    GridView2.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    GridView1.UseAccessibleHeader = true;
+                    GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
                 else
                 {
                     GVSinCloudDocuments.DataSource = comando.ExecuteReader();
                     GVSinCloudDocuments.Visible = true;
                     GVSinCloudDocuments.DataBind();
+                    GVSinCloudDocuments.UseAccessibleHeader = true;
+                    GVSinCloudDocuments.HeaderRow.TableSection = TableRowSection.TableHeader;
+                    GridView1.UseAccessibleHeader = true;
+                    GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
                 conexion.Close();
 
@@ -317,6 +330,8 @@ namespace WebApp
                 GridView3.DataSource = comando.ExecuteReader();
                 GridView3.Visible = true;
                 GridView3.DataBind();
+                GridView3.UseAccessibleHeader = true;
+                GridView3.HeaderRow.TableSection = TableRowSection.TableHeader;
                 conexion.Close();
             }
             if (Label6.Text != "")
@@ -334,6 +349,8 @@ namespace WebApp
                 GridView4.DataSource = comando.ExecuteReader();
                 GridView4.Visible = true;
                 GridView4.DataBind();
+                GridView4.UseAccessibleHeader = true;
+                GridView4.HeaderRow.TableSection = TableRowSection.TableHeader;
                 conexion.Close();
             }
             if (Label7.Text != "")
@@ -351,6 +368,8 @@ namespace WebApp
                 GridView5.DataSource = comando.ExecuteReader();
                 GridView5.Visible = true;
                 GridView5.DataBind();
+                GridView5.UseAccessibleHeader = true;
+                GridView5.HeaderRow.TableSection = TableRowSection.TableHeader;
                 conexion.Close();
             }
             if (Label8.Text != "")
@@ -368,6 +387,8 @@ namespace WebApp
                 GridView6.DataSource = comando.ExecuteReader();
                 GridView6.Visible = true;
                 GridView6.DataBind();
+                GridView6.UseAccessibleHeader = true;
+                GridView6.HeaderRow.TableSection = TableRowSection.TableHeader;
                 conexion.Close();
             }
             if (Label9.Text != "")
@@ -385,10 +406,10 @@ namespace WebApp
                 GridView7.DataSource = comando.ExecuteReader();
                 GridView7.Visible = true;
                 GridView7.DataBind();
+                GridView7.UseAccessibleHeader = true;
+                GridView7.HeaderRow.TableSection = TableRowSection.TableHeader;
                 conexion.Close();
-            }
-
-            
+            }          
 
         }
 

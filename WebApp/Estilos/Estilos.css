@@ -1,0 +1,307 @@
+﻿body {
+    background: #77acd2;
+}
+
+h1 {
+    /*display: inline-block;*/
+    font-family: Helvetica, verdana;
+    font-style: italic;
+    font-size: 55px;
+    font-weight: bolder;
+    color: black;
+    position: absolute;
+    margin-left: 4px;
+    margin-top: 10px;
+    left: 350px;
+    top: 7px;
+    right: 338px;
+    text-align: center;
+}
+
+h1::after, h1::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:3px;
+    top:0.6em;
+}
+
+h1::before {
+    left: -80px;
+    background-color: #FFC300;
+    }
+
+    h1::after {
+        right: -80px;
+        background-color: #F32378;
+    }
+
+#form1 {
+    height: 1843px;
+    width: 1343px;
+    margin-right: 27px;
+    margin-top: 213px;
+}
+
+#Button1 {
+    z-index: 1;
+    left: 651px;
+    top: 157px;
+    position: absolute;
+    height: 38px;
+    width: 145px;
+    background-color: #33CC33;
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: normal;
+    font-family: Helvetica, verdana;
+    right: 558px;
+}
+
+#Button5 {
+    z-index: 1;
+    left: 827px;
+    top: 156px;
+    position: absolute;
+    height: 38px;
+    width: 152px;
+    background-color: #33CC33;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: normal;
+    font-family: Helvetica, verdana;
+    font-style: italic;
+    text-align: center;
+}
+
+#DDLObjeto {
+    z-index: 1;
+    left: 224px;
+    top: 107px;
+    position: absolute;
+    Font: bold 14px Helvetica, verdana;
+    height: 32px;
+    width: 225px;
+}
+
+#DDLFiltro {
+    z-index: 1;
+    left: 226px;
+    top: 163px;
+    position: absolute;
+    Font: bold 14px Helvetica, verdana;
+    width: 225px;
+}
+
+#Label1 {
+    z-index: 1;
+    left: 532px;
+    top: 111px;
+    position: absolute;
+    width: 58px;
+    height: 21px;
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: normal;
+    font-family: Helvetica, verdana;
+}
+
+#Label2 {
+    z-index: 1;
+    left: 34px;
+    top: 112px;
+    position: absolute;
+    width: 186px;
+    bottom: 293px;
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: normal;
+    font-family: Helvetica, verdana;
+}
+
+#Label3 {
+    z-index: 1;
+    left: 37px;
+    top: 172px;
+    position: absolute;
+    height: 19px;
+    width: 189px;
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: normal;
+    font-family: Helvetica, verdana;
+}
+
+#TextBox1 {
+    z-index: 1;
+    top: 106px;
+    position: absolute;
+    left: 604px;
+    width: 414px;
+    border-style: solid;
+    text-align: left;
+    height: 32px;
+}
+
+#Image1 {
+    margin-left: 4px;
+    margin-top: 10px;
+    z-index: 1;
+    left: 1052px;
+    top: 46px;
+    width: 294px;
+    height: 105px;
+    position: absolute;
+}
+
+#ImagenSales {
+    margin-left: 4px;
+    margin-top: 10px;
+    z-index: 1;
+    left: 8px;
+    top: 0px;
+    width: 237px;
+    height: 102px;
+    position: absolute;
+    right: 789px;
+}
+
+#Image2 {
+    margin-left: 4px;
+    margin-top: 10px;
+    z-index: 1;
+    left: 24px;
+    top: -1px;
+    width: 159px;
+    height: 81px;
+    position: absolute;
+    right: 46px;
+}
+
+#contenedor {
+    width: 1266px;
+    height: 260px;
+    overflow: auto;
+    z-index: 1;
+    left: 41px;
+    right: -158px;
+    top: 223px;
+    position: absolute;
+}
+
+.rowStyle {
+    border-style: solid;
+    white-space: nowrap;
+}
+
+#LnkDet {
+    color: #3333FF;
+}
+
+#contenedorCuotas {
+    z-index: 1;
+    left: 41px;
+    position: absolute;
+    height: 245px;
+    width: 1266px;
+    text-align: left;
+    top: 493px;
+    overflow: auto;
+}
+
+#Label4 {
+    Color: white;
+    font-weight: bold;
+}
+
+#contenedorOportunidades {
+    z-index: 1;
+    left: 41px;
+    top: 749px;
+    position: absolute;
+    height: 245px;
+    width: 1266px;
+    overflow: auto;
+}
+
+#Label5 {
+    color: White;
+    font-weight: bold;
+}
+
+#contenedorActivos {
+    z-index: 1;
+    left: 41px;
+    top: 1011px;
+    position: absolute;
+    height: 245px;
+    width: 1266px;
+    overflow: auto;
+}
+
+#Label6 {
+    color: White;
+    font-weight: bold;
+}
+
+#contenedorConsolidados {
+    z-index: 1;
+    left: 41px;
+    top: 1271px;
+    position: absolute;
+    height: 245px;
+    width: 1266px;
+    overflow: auto;
+}
+
+#Label7 {
+    color: White;
+    font-weight: bold;
+}
+
+#contenedorRegfid {
+    z-index: 1;
+    left: 41px;
+    top: 1531px;
+    position: absolute;
+    height: 245px;
+    width: 1266px;
+    overflow: auto;
+}
+
+#Label8 {
+    color: White;
+    font-weight: bold;
+}
+
+#contenedorContactos {
+    z-index: 1;
+    left: 41px;
+    top: 1790px;
+    position: absolute;
+    height: 245px;
+    width: 1266px;
+    overflow: auto;
+}
+
+#Label9 {
+    color: White;
+    font-weight: bold;
+}
